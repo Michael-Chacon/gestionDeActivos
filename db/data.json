@@ -1,7 +1,101 @@
 {
     "activos": [
         {
-            "idActivo": "01"
+            "idActivo": "01",
+            "CodTransaccion": "",
+            "NroFormulario": "",
+            "idMarca": "",
+            "idCategoria": "",
+            "idTipo": "",
+            "valorUnitario": "",
+            "idProveedor": "",
+            "nroSerial": "",
+            "idEmpresaResponsable" : "",
+            "idEstado": ""
+        }
+    ],
+    "proveedor": [
+        {
+            "id": "",
+            "nombre": "",
+            "email": ""
+        }
+    ],
+    "marcas": [
+        {
+            "id": "",
+            "nombre": ""
+        }
+    ],
+    "estado": [
+        {
+            "id": "",
+            "nombre": ""
+        }
+    ],
+    "asignacion": [
+        {
+            "id": "",
+            "fecha": "",
+            "idResponsable": ""
+        }
+    ],
+    "personas": [
+        {
+            "id": "",
+            "nombre": "",
+            "email": "",
+            "idTipoPersona": ""
+        }
+    ],
+    "categoriaActivo": [
+        {
+            "id": "",
+            "nombre": ""
+        }
+    ],
+    "tipoPersona": [
+        {
+            "id": "",
+            "nombre": ""
+        }
+    ],
+    "tipoMovActivo": [
+        {
+            "id": "",
+            "nombre": ""
+        }
+    ],
+    "historialActivo": [
+        {
+            "id": "",
+            "idActivo": "",
+            "fecha": "",
+            "idResponsable": "",
+            "idEstado": ""
+        }
+    ],
+    "telefonoPersona": [
+        {
+            "id": "",
+            "nro": "",
+            "ubicacion": "",
+            "idPersona": ""
+        }
+    ],
+    "tipoActivo": [
+        {
+            "id": "",
+            "nombre": ""
+        }
+    ],
+    "detalleMovimiento": [
+        {
+            "id": "",
+            "fecha": "",
+            "idActivo": "",
+            "comentario": "",
+            "idAsignacion": ""
         }
     ]
 }
