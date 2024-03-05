@@ -9,4 +9,4 @@ class MenuNavegacion extends HTMLElement {
         `;
   }
 }
-customElements.define("menu-navegacion", menuNavegacion);
+customElements.define("menu-navegacion", MenuNavegacion);
