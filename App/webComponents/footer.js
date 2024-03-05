@@ -4,7 +4,10 @@ class FooterPrincipal extends HTMLElement {
     this.render();
   }
   render() {
-    this.innerHTML = ``;
+    this.innerHTML = `
+    <footer>
+      <p>© Coptright - Todos los derechos reservados Duván Arenas - Alexis Chacón</p>
+    </footer>`;
   }
 }
 customElements.define("footer-principal", FooterPrincipal);
