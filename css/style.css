@@ -16,12 +16,13 @@ body {
 
 header {
     width: 100vw;
-    height: 15vh;
+    height: 10vh;
     font-size: 1rem;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    background-color: black;
 }
 
 header h1 {
@@ -30,18 +31,20 @@ header h1 {
 
 header img {
     object-fit: contain;
-    height: 100%;
+    height: 90%;
     /* width: 100%; */
 }
 
 .menu {
     justify-self: flex-start;
     font-size: 2rem;
+    color: #FFF;
+    margin-left: 30px;
     /* color: #004573; */
 }
 
 body .nav:hover {
-    width: 25vw;
+    width: 20vw;
 }
 
 #btnMenu:hover {
@@ -50,7 +53,7 @@ body .nav:hover {
 }
 
 .nav.active {
-    width: 4vw;
+    width: 6vw;
 }
 
 ul li{
@@ -91,10 +94,11 @@ nav {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    height: 85vh;
+    height: 80vh;
     overflow: hidden;
     transition: all 0.5s linear;
-    width: 25vw;
+    width: 20vw;
+    background-color: black;
 }
 
 .admin {
@@ -110,10 +114,59 @@ nav {
 }
 
 main {
-    height: 85vh;
-
+    width: 100%;
+    height: 80vh;
 }
 
 .hidden {
     display: none;
+}
+
+.contenidoLista {
+    color: #FFF;
+}
+
+footer {
+    background-color: black;
+    color: #FFF;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    nav {
+        margin-top: 10vh;
+        position: fixed;
+        display: flex;
+        align-items: center;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transform: translateX(100%);
+        transition: transform 0.3s;
+        /* padding: 10em; */
+        background-color: rgba(0, 0, 0, 0.823);
+        height: 80vh;
+        z-index: 100;
+        flex-direction: column;
+    }
+
+    .nav.active {
+        transform: translateX(0);
+        width: 100vw;
+    }
+
+    body .nav:hover {
+        width: 100vw;
+    }
+
+    li a:hover {
+        background-color: #1988d3;
+        color: #FFF6E9;
+    }
 }
