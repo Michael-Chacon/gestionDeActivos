@@ -1,3 +1,7 @@
 {
-    "activos": []
+    "activos": [
+        {
+            "idActivo": "01"
+        }
+    ]
 }
