@@ -107,6 +107,12 @@ class MenuNavegacion extends HTMLElement {
         </li>         
     </ul> -->
   </nav>
+  <main class="main">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente
+        debitis perferendis placeat, voluptatum consequuntur ullam repudiandae
+        nulla iure velit quia dolor ipsa temporibus accusantium quae
+        voluptatibus doloribus nostrum obcaecati ut!
+      </main>
   </div>
         `;
 
