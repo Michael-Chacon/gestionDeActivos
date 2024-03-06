@@ -1,117 +1,117 @@
 {
-    "activos": [
+    "assets": [
         {
-            "idActivo": "01",
-            "CodTransaccion": "",
-            "NroFormulario": "",
-            "idMarca": "",
-            "idCategoria": "",
-            "idTipo": "",
-            "valorUnitario": "",
-            "idProveedor": "",
-            "nroSerial": "",
-            "idEmpresaResponsable" : "",
-            "idEstado": ""
+            "assetId": "01",
+            "transactionCod": "",
+            "formNumber": "",
+            "brandId": "",
+            "categoryId": "",
+            "typeId": "",
+            "unitValue": "",
+            "supplierId": "",
+            "serialNumber": "",
+            "companyInChargeId" : "",
+            "statusId": ""
         }
     ],
-    "proveedores": [
+    "suppliers": [
         {
             "id": "",
-            "nombre": "",
+            "name": "",
             "email": ""
         }
     ],
-    "marcas": [
+    "brands": [
         {
             "id": "",
-            "nombre": ""
+            "name": ""
         }
     ],
-    "estados": [
+    "status": [
         {
             "id": "1",
-            "nombre": "No asignado"
+            "name": "No asignado"
         },
         {
             "id": "2",
-            "nombre": "Asignado"
+            "name": "Asignado"
         },
         {
             "id": "3",
-            "nombre": "Dado de baja por daño"
+            "name": "Dado de baja por daño"
         },
         {
             "id": "4",
-            "nombre": "En reparación y/oGarantia"
+            "name": "En reparación y/oGarantia"
         }
     ],
-    "asignaciones": [
+    "assignments": [
         {
             "id": "",
-            "fecha": "",
-            "idResponsable": ""
+            "date": "",
+            "responsibleId": ""
         }
     ],
-    "personas": [
+    "people": [
         {
             "id": "",
-            "nombre": "",
+            "name": "",
             "email": "",
-            "idTipoPersona": ""
+            "typoPersonId": ""
         }
     ],
-    "categoriaActivos": [
+    "categoryAssets": [
         {
             "id": "",
-            "nombre": ""
+            "name": ""
         }
     ],
-    "tipoPersona": [
+    "typePeople": [
         {
             "id": "1",
-            "nombre": "jurídicas "
+            "name": "jurídicas "
         },
         {
             "id": "2",
-            "nombre": "natural"
+            "name": "natural"
         }
     ],
-    "tipoMovActivo": [
+    "typeMovAssets": [
         {
             "id": "",
-            "nombre": ""
+            "name": ""
         }
     ],
-    "historialActivos": [
+    "recordAssets": [
         {
             "id": "",
-            "idActivo": "",
-            "fecha": "",
-            "idResponsable": "",
-            "idEstado": ""
+            "assetId": "",
+            "date": "",
+            "responsibleId": "",
+            "statusId": ""
         }
     ],
-    "telefonoPersona": [
+    "phonePeople": [
         {
             "id": "",
-            "nro": "",
-            "ubicacion": "",
-            "idPersona": ""
+            "number": "",
+            "location": "",
+            "personId": ""
         }
     ],
-    "tipoActivo": [
+    "tipyAssets": [
         {
             "id": "",
-            "nombre": ""
+            "name": ""
         }
     ],
-    "detalleMovimientos": [
+    "detailMovements": [
         {
             "id": "",
-            "fecha": "",
-            "idActivo": "",
-            "comentario": "",
-            "idAsignacion": ""
+            "date": "",
+            "assetId": "",
+            "comment": "",
+            "assignmentId": ""
         }
     ]
 }
