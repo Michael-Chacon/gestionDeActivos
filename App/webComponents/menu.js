@@ -122,7 +122,7 @@ class MenuNavegacion extends HTMLElement {
       switch (e.target.innerHTML) {
         case "Activos":
           console.log("Activos");
-          mainContent.innerHTML = "<footer-principal></footer-principal>";
+          mainContent.innerHTML = "<tabla-activos></tabla-activos>";
           break;
         case "Marcas":
           mainContent.innerHTML = "Marcas";

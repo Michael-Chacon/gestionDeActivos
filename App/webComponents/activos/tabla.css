@@ -1,0 +1,21 @@
+
+
+table th, td{
+    padding: 5px 10px;
+    border: 1px solid #000;
+    /* border-collapse: collapse; */
+}
+
+table {
+    border: 1px solid #000;
+    border-collapse: collapse;
+    display: block;
+}
+
+tr {
+    border-bottom: rgb(186, 187, 186) 1px solid;
+}
+
+.opciones {
+    column-span: "2";
+}

@@ -1,5 +1,6 @@
 import "/App/webComponents/menu.js";
 import "/App/webComponents/footer.js";
+import "/App/webComponents/activos/tabla.js"
 
 let nav = document.querySelector(".nav");
 let menu = document.querySelector("#tituloMenu");
