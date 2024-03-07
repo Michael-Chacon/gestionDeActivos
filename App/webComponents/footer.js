@@ -6,7 +6,7 @@ class FooterPrincipal extends HTMLElement {
   render() {
     this.innerHTML = `
     <footer>
-      <p>© Coptright - Todos los derechos reservados Duván Arenas - Alexis Chacón</p>
+      <p>© Copyright - Todos los derechos reservados Duván Arenas - Alexis Chacón</p>
     </footer>`;
   }
 }

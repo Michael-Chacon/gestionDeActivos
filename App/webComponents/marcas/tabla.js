@@ -1,4 +1,4 @@
-class TablaActivos extends HTMLElement {
+class TablaMarcas extends HTMLElement {
     constructor () {
         super();
         this.render()
@@ -26,32 +26,15 @@ class TablaActivos extends HTMLElement {
                 <thead>
                     <tr>
                         <th >id</th>
-                        <th>Código Transacción</th>
-                        <th>Formulario</th>
-                        <th>Marca</th>
-                        <th>Categoría</th>
-                        <th>Tipo</th>
-                        <th>Valor unitario</th>
-                        <th>Proveedor</th>
-                        <th>Serial</th>
-                        <th>Empresa Responsable</th>
-                        <th>Estado</th>
+                        <th>Nombre</th>
                         <th class="opciones" colspan="2">Opciones</th>
                     </tr>
                 </thead>
+            
                 <tbody>
                     <tr>
-                        <td>1</td>
-                        <td>324</td>
-                        <td>966217120</td>
-                        <td>LG</td>
-                        <td>Computo</td>
-                        <td>dsfdsfas</td>
-                        <td>2000000</td>
-                        <td>Sodimac Colombia Sa</td>
-                        <td>984611-1</td>
-                        <td>CampusLands</td>
-                        <td>Activo</td>
+                        <td>5654</td>
+                        <td>Samsung</td>
                         <td><button class="editar">Editar</button></td>
                         <td><button class="eliminar">Eliminar</button></td>
                     </tr>
@@ -60,4 +43,4 @@ class TablaActivos extends HTMLElement {
         </body>`
     }
 }
-customElements.define('tabla-activos', TablaActivos)
+customElements.define('tabla-marcas', TablaMarcas)

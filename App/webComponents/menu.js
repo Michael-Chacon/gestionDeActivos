@@ -13,7 +13,7 @@ class MenuNavegacion extends HTMLElement {
     href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
     rel="stylesheet"
   />
-    <header>
+    <header class = "header">
     <img
       class="logoCampus"
       src="../../storage/imgs/logoCampus.png"
@@ -125,25 +125,25 @@ class MenuNavegacion extends HTMLElement {
           mainContent.innerHTML = "<tabla-activos></tabla-activos>";
           break;
         case "Marcas":
-          mainContent.innerHTML = "Marcas";
+          mainContent.innerHTML = "<tabla-marcas></tabla-marcas>";
           break;
         case "Persona":
-          mainContent.innerHTML = "Persona";
+          mainContent.innerHTML = "<tabla-personas></tabla-personas>";
           break;
         case "Proveedor":
-          mainContent.innerHTML = "Proveedor";
+          mainContent.innerHTML = "<tabla-proveedores></tabla-proveedores>";
           break;
         case "Estado":
-          mainContent.innerHTML = "Estado";
+          mainContent.innerHTML = "<tabla-estados></tabla-estados>";
           break;
         case "tipoPersona":
-          mainContent.innerHTML = "tipoPersona";
+          mainContent.innerHTML = "<tabla-tipo-persona></tabla-tipo-persona>";
           break;
         case "tipoMovAct":
-          mainContent.innerHTML = "tipoMovAct";
+          mainContent.innerHTML = "<tabla-tipo-mov-activo></tabla-tipo-mov-activo>";
           break;
         case "tipoActivo":
-          mainContent.innerHTML = "tipoActivo";
+          mainContent.innerHTML = "<tipo-activo></tipo-activo>";
           break;
       }
       e.stopImmediatePropagation();
