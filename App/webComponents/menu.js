@@ -23,12 +23,7 @@ class MenuNavegacion extends HTMLElement {
   </header>
     <div class="menuLateral">
     <nav class="nav">
-    <!-- <div class="admin">
-        <i class='bx bx-home-circle'></i>
-        <h2 class="tituloMenu" id="tituloMenu">Menú</h2>
-    </div> -->
-
-    <ul class="opciones">
+      <ul class="opciones">
       <li>
         <a class="contenidoLista" href="#">
           <i class="bx bxs-objects-horizontal-right"></i>
@@ -78,34 +73,6 @@ class MenuNavegacion extends HTMLElement {
         </a>
       </li>
     </ul>
-
-    <!-- <ul>
-        <li>
-            <a href="#">
-                <i class='bx bxs-add-to-queue'></i>
-                <p>Agregar</p>
-            </a>
-        </li>
-        
-        <li>
-            <a href="#">
-                <i class='bx bxs-edit-alt'></i>
-                <p>Editar</p>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class='bx bx-eraser'></i>
-                <p>Eliminar</p>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class='bx bx-search' ></i>
-                <p>Buscar</p>
-            </a>
-        </li>         
-    </ul> -->
   </nav>
   <main class="main">
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente
@@ -140,7 +107,8 @@ class MenuNavegacion extends HTMLElement {
           mainContent.innerHTML = "<tabla-tipo-persona></tabla-tipo-persona>";
           break;
         case "tipoMovAct":
-          mainContent.innerHTML = "<tabla-tipo-mov-activo></tabla-tipo-mov-activo>";
+          mainContent.innerHTML =
+            "<tabla-tipo-mov-activo></tabla-tipo-mov-activo>";
           break;
         case "tipoActivo":
           mainContent.innerHTML = "<tipo-activo></tipo-activo>";
