@@ -176,3 +176,7 @@ footer {
         color: #FFF6E9;
     }
 }
+
+.ventanaAgregar {
+    display: block;
+}
