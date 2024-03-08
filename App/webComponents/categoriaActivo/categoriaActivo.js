@@ -56,11 +56,11 @@ class ComponenteMarcas extends HTMLElement {
       e.stopImmediatePropagation();
       e.preventDefault();
       if(btnGuardar.value === "Registrar tarea"){
-        guardarDatos(formulario, "brands");
+        guardarDatos(formulario, "categoryAssets");
         console.log("New")
       }else if (btnGuardar.value === "Actualizar"){
         const id = btnGuardar.id
-        actualizarDatos(formulario, "brands", id)
+        actualizarDatos(formulario, "categoryAssets", id)
         btnGuardar.value = "Registrar tarea"
         console.log("Update")
       }
@@ -76,7 +76,7 @@ class ComponenteMarcas extends HTMLElement {
   async renderUpdatedData() {
     const datosDiv = this.querySelector(".main-estado");
     datosDiv.innerHTML = "";
-    const datos = await getData("brands");
+    const datos = await getData("categoryAssets");
     datos.forEach((dato) => {
       datosDiv.innerHTML += `
       <div class="card-estado">
@@ -100,7 +100,7 @@ class ComponenteMarcas extends HTMLElement {
         );
         if (pregunta) {
           const id = e.target.id;
-          deleteData(id, "brands");
+          deleteData(id, "categoryAssets");
           setTimeout(async () => {
             await this.renderUpdatedData();
           }, 100);
@@ -114,7 +114,7 @@ class ComponenteMarcas extends HTMLElement {
     areaPrincipal.addEventListener("click", async (e) => {
       if (e.target.classList.contains("editar")) {
         const id = e.target.id;
-        const estado = await getOneData(id, "brands");
+        const estado = await getOneData(id, "categoryAssets");
         const dialog = document.querySelector("dialog");
         const btnGuardar = document.querySelector(".guardar");
         btnGuardar.value = "Actualizar";
@@ -144,4 +144,4 @@ class ComponenteMarcas extends HTMLElement {
     });
   }
 }
-customElements.define('tabla-marcas', ComponenteMarcas)
+customElements.define('tabla-categoria-activo', ComponenteMarcas)
