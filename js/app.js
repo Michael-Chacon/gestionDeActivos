@@ -1,13 +1,13 @@
 import "/App/webComponents/menu.js";
 import "/App/webComponents/footer.js";
-import "/App/webComponents/activos/tabla.js"
-import "/App/webComponents/marcas/tabla.js"
-import "/App/webComponents/personas/tabla.js"
-import "/App/webComponents/proveedores/tabla.js"
-import "/App/webComponents/estados/tabla.js"
-import "/App/webComponents/tipoPersonas/tabla.js"
-import "/App/webComponents/tipoMovActivo/tabla.js"
-import "/App/webComponents/tipoActivo/tabla.js"
+import "/App/webComponents/activos/activos.js"
+import "/App/webComponents/marcas/marcas.js"
+import "/App/webComponents/personas/personas.js"
+import "/App/webComponents/proveedores/proveedores.js"
+import "/App/webComponents/estados/estado.js"
+import "/App/webComponents/tipoPersonas/tipoPersonas.js"
+import "/App/webComponents/tipoMovActivo/tipoMovActivo.js"
+import "/App/webComponents/tipoActivo/tipoActivo.js"
 import { postData } from "../../../Api/ApiActivos.js";
 import { updateData } from "../../../Api/ApiActivos.js";
 

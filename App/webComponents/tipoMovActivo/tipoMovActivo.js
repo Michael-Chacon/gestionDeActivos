@@ -1,4 +1,4 @@
-class TablaTipoPersona extends HTMLElement {
+class TablaTipoMovActivo extends HTMLElement {
     constructor () {
         super();
         this.render()
@@ -10,7 +10,7 @@ class TablaTipoPersona extends HTMLElement {
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Document</title>
-                <link rel="stylesheet" href="App/webComponents/activos/tabla.css">
+                <link rel="stylesheet" href="App/webComponents/activos/activos.css">
             </head>
 
             <header class="contenedor">
@@ -43,4 +43,4 @@ class TablaTipoPersona extends HTMLElement {
     }
 }
 
-customElements.define('tabla-tipo-persona', TablaTipoPersona)
+customElements.define('tabla-tipo-mov-activo', TablaTipoMovActivo)
