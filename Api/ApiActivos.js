@@ -37,7 +37,7 @@ export function postData(data, endpoint) {
   }
 }
 
-function updateData(data, endpoint, id) {
+export function updateData(data, endpoint, id) {
   try {
     fetch(`${URL_BASE}/${endpoint}/${id}`, {
       method: "PUT",

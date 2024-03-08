@@ -9,6 +9,7 @@ import "/App/webComponents/tipoPersonas/tabla.js"
 import "/App/webComponents/tipoMovActivo/tabla.js"
 import "/App/webComponents/tipoActivo/tabla.js"
 import { postData } from "../../../Api/ApiActivos.js";
+import { updateData } from "../../../Api/ApiActivos.js";
 
 let nav = document.querySelector(".nav");
 let menu = document.querySelector("#tituloMenu");
@@ -21,4 +22,10 @@ export function guardarDatos(formulario, endpoint) {
   const getDataForm = new FormData(formulario);
   const data = Object.fromEntries(getDataForm);
   postData(data, endpoint);
+}
+
+export function actualizarDatos(formulario, endpoint, id) {
+  const getDataForm = new FormData(formulario);
+  const data = Object.fromEntries(getDataForm);
+  updateData(data, endpoint, id);
 }
