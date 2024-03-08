@@ -4,11 +4,12 @@ const headers = new Headers({
   "Content-Type": "application/json",
 });
 
-async function getData(endpoint) {
+export async function getData(endpoint, embed = "") {
   try {
-    const response = await fetch(`${URL_BASE}/${endpoint}`);
+    const response = await fetch(`${URL_BASE}/${endpoint}${embed}`);
     if (response.status === 200) {
       const data = await response.json();
+      // console.log(data);
       return data;
     } else if (response.status === 404) {
       console.log("El servidor no pudo encontrar el contenido solicitado");
@@ -22,13 +23,15 @@ async function getData(endpoint) {
   }
 }
 
-function postData(data, endpoint) {
+export function postData(data, endpoint) {
   try {
     fetch(`${URL_BASE}/${endpoint}`, {
       method: "POST",
       headers: headers,
       body: JSON.stringify(data),
     });
+    // .then((res) => res.status).then(result => result);
+    // .then((result) => result);
   } catch (error) {
     console.log(error);
   }
