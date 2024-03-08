@@ -124,6 +124,30 @@ form .botones .cancelar:hover{
     cursor: pointer;
 }
 
+.header-estado{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario-header{
+    width: 30%;
+}
+
+.formulario-header input{
+    background-color: #f1f1f1;
+    padding: 9px;
+    border-radius: 5px;
+    border: 1px solid #e1e3e4;
+}
+
+.formulario-header input:focus{
+    border-radius: 5px;
+    outline: 1px solid #7952B3;
+}
+
+
 .mostrar-modal{
     margin: 10px;
     border: 1px solid #7952B3;

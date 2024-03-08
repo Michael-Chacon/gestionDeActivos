@@ -34,7 +34,14 @@ class TablaEstados extends HTMLElement {
       </section>
     </dialog>
     <link rel="stylesheet" href="App/webComponents/estados/estado.css">
-    <button class="mostrar-modal"><i class="bx bx-plus"></i> Registrar estado</button>
+    <section class="header-estado">
+    <div>
+      <button class="mostrar-modal"><i class="bx bx-plus"></i> Registrar estado</button>
+    </div>
+    <form action="#" class="formulario-header">
+      <input type="text" name="name" id="name" class="name" placeholder="Buscar...">
+    </form>
+  </section>
     <section class="main-estado">
       <div class="card-estado">
         <p class="titulo-estado">En reparación y/oGarantia</p>
@@ -55,14 +62,14 @@ class TablaEstados extends HTMLElement {
     btnGuardar.addEventListener("click", async (e) => {
       e.stopImmediatePropagation();
       e.preventDefault();
-      if(btnGuardar.value === "Registrar tarea"){
+      if (btnGuardar.value === "Registrar tarea") {
         guardarDatos(formulario, "status");
-        console.log("New")
-      }else if (btnGuardar.value === "Actualizar"){
-        const id = btnGuardar.id
-        actualizarDatos(formulario, "status", id)
-        btnGuardar.value = "Registrar tarea"
-        console.log("Update")
+        console.log("New");
+      } else if (btnGuardar.value === "Actualizar") {
+        const id = btnGuardar.id;
+        actualizarDatos(formulario, "status", id);
+        btnGuardar.value = "Registrar tarea";
+        console.log("Update");
       }
       const dialog = document.querySelector("dialog");
       dialog.close();
@@ -118,7 +125,7 @@ class TablaEstados extends HTMLElement {
         const dialog = document.querySelector("dialog");
         const btnGuardar = document.querySelector(".guardar");
         btnGuardar.value = "Actualizar";
-        btnGuardar.id = estado.id
+        btnGuardar.id = estado.id;
         const input = document.querySelector("#name");
         input.value = estado.name;
         dialog.showModal();
