@@ -12,6 +12,7 @@ class TablaEstados extends HTMLElement {
     this.datosFormulario();
     this.actualizarEstado();
     this.modal();
+    this.buscador();
   }
 
   render() {
@@ -36,11 +37,12 @@ class TablaEstados extends HTMLElement {
     <link rel="stylesheet" href="App/webComponents/estados/estado.css">
     <section class="header-estado">
     <div>
-      <button class="mostrar-modal"><i class="bx bx-plus"></i> Registrar estado</button>
+    <button class="mostrar-modal"><i class="bx bx-plus"></i> Registrar estado</button>
     </div>
     <form action="#" class="formulario-header">
-      <input type="text" name="name" id="name" class="name" placeholder="Buscar...">
+    <input type="text" name="name" class="busqueda" placeholder="Buscar...">
     </form>
+    <p>Status <i class='bx bx-pulse'></i></p>
   </section>
     <section class="main-estado">
       <div class="card-estado">
@@ -54,11 +56,43 @@ class TablaEstados extends HTMLElement {
     </section>`;
   }
 
+  buscador() {
+    const buscador = document.querySelector(".busqueda");
+    const datosDiv = this.querySelector(".main-estado");
+    buscador.addEventListener("input", async (e) => {
+      const estados = await getData("status");
+      datosDiv.innerHTML = "";
+      const busqueda = e.target.value.trim();
+      const result = estados.filter((estado) =>
+        estado.name.toLowerCase().startsWith(busqueda.toLowerCase())
+      );
+      if (result.length != 0) {
+        result.forEach((dato) => {
+          datosDiv.innerHTML += `
+        <div class="card-estado">
+        <p class="titulo-estado">${dato.name}</p>
+        <p><small class="item-estado">Id: </small>${dato.id}</p>
+        <div class="opciones-estado">
+          <button class="editar" id="${dato.id}"><i class='bx bx-edit-alt'></i>Editar</button>
+          <button class="eliminar" id="${dato.id}"><i class="bx bx-trash"></i>Eliminar</button>
+        </div>
+      </div>
+        `;
+        });
+      } else {
+        datosDiv.innerHTML += `
+        <div class="card-estado">
+        <p class="titulo-estado">Estado no encontrado</p>
+      </div>
+        `;
+      }
+    });
+  }
+
   datosFormulario() {
     const input = document.querySelector("#name");
     const formulario = document.querySelector("#formulario");
     const btnGuardar = document.querySelector(".guardar");
-    console.log(formulario);
     btnGuardar.addEventListener("click", async (e) => {
       e.stopImmediatePropagation();
       e.preventDefault();
@@ -84,8 +118,9 @@ class TablaEstados extends HTMLElement {
     const datosDiv = this.querySelector(".main-estado");
     datosDiv.innerHTML = "";
     const datos = await getData("status");
-    datos.forEach((dato) => {
-      datosDiv.innerHTML += `
+    if (datos.length != 0) {
+      datos.forEach((dato) => {
+        datosDiv.innerHTML += `
       <div class="card-estado">
       <p class="titulo-estado">${dato.name}</p>
       <p><small class="item-estado">Id: </small>${dato.id}</p>
@@ -95,7 +130,14 @@ class TablaEstados extends HTMLElement {
       </div>
     </div>
       `;
-    });
+      });
+    } else {
+      datosDiv.innerHTML += `
+    <div class="card-estado">
+    <p class="titulo-estado">No hay estados registrados</p>
+  </div>
+    `;
+    }
   }
 
   detectarClick() {
