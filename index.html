@@ -3,85 +3,244 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="stylesheet" href="css/style.css" />
+    <!-- <link rel="stylesheet" href="css/style.css" /> -->
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
-    /> -->
+    />
     <link
       rel="shortcut icon"
       href="storage/imgs/favicon.png"
       type="image/x-icon"
     />
-    <script src="js/app.js" type="module" defer></script>
+    <link rel="stylesheet" href="css/menu.css" />
+    <!-- <script src="js/app.js" type="module" defer></script> -->
+    <script src="js/menu.js" defer></script>
     <title>Gestion de activos</title>
   </head>
   <body>
+    <section id="sidebar">
+      <a href="#" class="brand"><i class="bx bxs-smile icon"></i> AdminSite</a>
+      <ul class="side-menu">
+        <!-- <li>
+          <a href="#" class="active"
+            ><i class="bx bxs-dashboard icon"></i> Dashboard</a>
+        </li> -->
+        <li>
+          <a href="#"
+            ><i class="bx bxs-inbox icon"></i> Activos
+            <i class="bx bx-chevron-right icon-right"></i
+          ></a>
+          <ul class="side-dropdown">
+            <li><a href="#">Agregar</a></li>
+            <li><a href="#">Editar</a></li>
+            <li><a href="#">Eliminar</a></li>
+            <li><a href="#">Buscar</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"
+            ><i class="bx bxs-inbox icon"></i> Personas
+            <i class="bx bx-chevron-right icon-right"></i
+          ></a>
+          <ul class="side-dropdown">
+            <li><a href="#">Agregar</a></li>
+            <li><a href="#">Editar</a></li>
+            <li><a href="#">Eliminar</a></li>
+            <li><a href="#">Buscar</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"
+            ><i class="bx bxs-inbox icon"></i> Proveedor
+            <i class="bx bx-chevron-right icon-right"></i
+          ></a>
+          <ul class="side-dropdown">
+            <li><a href="#">Agregar</a></li>
+            <li><a href="#">Editar</a></li>
+            <li><a href="#">Eliminar</a></li>
+            <li><a href="#">Buscar</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"
+            ><i class="bx bxs-inbox icon"></i> Marcas
+            <i class="bx bx-chevron-right icon-right"></i
+          ></a>
+          <ul class="side-dropdown">
+            <li><a href="#">Agregar</a></li>
+            <li><a href="#">Editar</a></li>
+            <li><a href="#">Eliminar</a></li>
+            <li><a href="#">Buscar</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"
+            ><i class="bx bxs-inbox icon"></i> Estados
+            <i class="bx bx-chevron-right icon-right"></i
+          ></a>
+          <ul class="side-dropdown">
+            <li><a href="#">Agregar</a></li>
+            <li><a href="#">Editar</a></li>
+            <li><a href="#">Eliminar</a></li>
+            <li><a href="#">Buscar</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"
+            ><i class="bx bxs-inbox icon"></i> Categoria Activos
+            <i class="bx bx-chevron-right icon-right"></i
+          ></a>
+          <ul class="side-dropdown">
+            <li><a href="#">Agregar</a></li>
+            <li><a href="#">Editar</a></li>
+            <li><a href="#">Eliminar</a></li>
+            <li><a href="#">Buscar</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"
+            ><i class="bx bxs-inbox icon"></i> Tipo Persona
+            <i class="bx bx-chevron-right icon-right"></i
+          ></a>
+          <ul class="side-dropdown">
+            <li><a href="#">Agregar</a></li>
+            <li><a href="#">Editar</a></li>
+            <li><a href="#">Eliminar</a></li>
+            <li><a href="#">Buscar</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"
+            ><i class="bx bxs-inbox icon"></i> Estados
+            <i class="bx bx-chevron-right icon-right"></i
+          ></a>
+          <ul class="side-dropdown">
+            <li><a href="#">Agregar</a></li>
+            <li><a href="#">Editar</a></li>
+            <li><a href="#">Eliminar</a></li>
+            <li><a href="#">Buscar</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"
+            ><i class="bx bxs-inbox icon"></i> Tipo Movimiento Activo
+            <i class="bx bx-chevron-right icon-right"></i
+          ></a>
+          <ul class="side-dropdown">
+            <li><a href="#">Agregar</a></li>
+            <li><a href="#">Editar</a></li>
+            <li><a href="#">Eliminar</a></li>
+            <li><a href="#">Buscar</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"
+            ><i class="bx bxs-inbox icon"></i> Tipo activo
+            <i class="bx bx-chevron-right icon-right"></i
+          ></a>
+          <ul class="side-dropdown">
+            <li><a href="#">Agregar</a></li>
+            <li><a href="#">Editar</a></li>
+            <li><a href="#">Eliminar</a></li>
+            <li><a href="#">Buscar</a></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <section id="content">
+      <!-- NAVBAR -->
+      <nav>
+        <i class="bx bx-menu toggle-sidebar"></i>
+        <form action="#"></form>
 
-    <!-- <dialog class="ventanaAgregar">
-      <section>
-        <span>Agregar Activos</span>
-        <form action="">
-          
-          <ul>
+        <span class="divider"></span>
+        <div class="profile">
+          <img
+            src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGVvcGxlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+            alt=""
+          />
+          <ul class="profile-link">
             <li>
-              <label for="transactionCod">Transaccion</label>
-              <input type="text" id="transactionCod" name="transactionCod" />
+              <a href="#"><i class="bx bxs-user-circle icon"></i> Profile</a>
             </li>
             <li>
-              <label for="formNumber">N° Formulario</label>
-              <input type="text" id="formNumber" name="formNumber" />
+              <a href="#"><i class="bx bxs-cog"></i> Settings</a>
             </li>
             <li>
-              <label for="brandId">Marca</label>
-              <input type="text" id="brandId" name="brandId" />
-            </li>
-            <li>
-              <label for="categoryId">Categoria</label>
-              <input type="text" id="categoryId" name="categoryId" />
-            </li>
-            <li>
-              <label for="typeId">Tipo</label>
-              <input type="text" id="typeId" name="typeId" />
-            </li>
-            <li>
-              <label for="unitValue">Valor unitario</label>
-              <input type="text" id="unitValue" name="unitValue" />
-            </li>
-            <li>
-              <label for="supplierId">Proveedor</label>
-              <input type="text" id="supplierId" name="supplierId" />
-            </li>
-            <li>
-              <label for="serialNumber">Serial</label>
-              <input type="text" id="serialNumber" name="serialNumber" />
-            </li>
-            <li>
-              <label for="companyInChargeId">Empresa Responsable</label>
-              <input type="text" id="companyInChargeId" name="companyInChargeId" />
-            </li>
-            <li>
-              <label for="statusId">Estado</label>
-              <input type="text" id="statusId" name="statusId" />
+              <a href="#"><i class="bx bxs-log-out-circle"></i> Logout</a>
             </li>
           </ul>
-        </form>
-      </section>
-    </dialog> -->
+        </div>
+      </nav>
+      <!-- NAVBAR -->
 
-    <div class="menuLateral">
-      
-    </div>
-      <menu-navegacion>
-      </menu-navegacion>
-      <!-- <main class="main">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente
-        debitis perferendis placeat, voluptatum consequuntur ullam repudiandae
-        nulla iure velit quia dolor ipsa temporibus accusantium quae
-        voluptatibus doloribus nostrum obcaecati ut!
-      </main> -->
-    <!-- </div> -->
-    <!-- <tabla-activos></tabla-activos> -->
-    <footer-principal></footer-principal>
+      <!-- MAIN -->
+      <main>
+        <h1 class="title">Dashboard</h1>
+        <ul class="breadcrumbs">
+          <li><a href="#">Home</a></li>
+          <li class="divider">/</li>
+          <li><a href="#" class="active">Dashboard</a></li>
+        </ul>
+        <div class="info-data">
+          <div class="card">
+            <div class="head">
+              <div>
+                <h2>1500</h2>
+                <p>Traffic</p>
+              </div>
+              <i class="bx bx-trending-up icon"></i>
+            </div>
+            <span class="progress" data-value="40%"></span>
+            <span class="label">40%</span>
+          </div>
+          <div class="card">
+            <div class="head">
+              <div>
+                <h2>234</h2>
+                <p>Sales</p>
+              </div>
+              <i class="bx bx-trending-down icon down"></i>
+            </div>
+            <span class="progress" data-value="60%"></span>
+            <span class="label">60%</span>
+          </div>
+          <div class="card">
+            <div class="head">
+              <div>
+                <h2>465</h2>
+                <p>Pageviews</p>
+              </div>
+              <i class="bx bx-trending-up icon"></i>
+            </div>
+            <span class="progress" data-value="30%"></span>
+            <span class="label">30%</span>
+          </div>
+          <div class="card">
+            <div class="head">
+              <div>
+                <h2>235</h2>
+                <p>Visitors</p>
+              </div>
+              <i class="bx bx-trending-up icon"></i>
+            </div>
+            <span class="progress" data-value="80%"></span>
+            <span class="label">80%</span>
+          </div>
+        </div>
+        <div class="data">
+          <div class="content-data">
+            <div class="head">
+              <h3>Sales Report</h3>
+            </div>
+            <!-- conteido -->
+            <h1>Hola Mundo</h1>
+          </div>
+        </div>
+      </main>
+      <!-- MAIN -->
+    </section>
+    <!-- <footer-principal></footer-principal> -->
   </body>
 </html>
