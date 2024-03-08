@@ -49,7 +49,7 @@ function updateData(data, endpoint, id) {
   }
 }
 
-async function getOneData(id, endpoint) {
+export async function getOneData(id, endpoint) {
   try {
     const response = await fetch(`${URL_BASE}/${endpoint}/${id}`);
     if (response.status === 200) {
@@ -64,5 +64,16 @@ async function getOneData(id, endpoint) {
     }
   } catch (error) {
     console.log(error);
+  }
+}
+
+export function deleteData(id, endpoint){
+  try{
+    fetch(`${URL_BASE}/${endpoint}/${id}`, {
+      method: "DELETE",
+      headers: headers
+    })
+  }catch(error){
+    console.log(error)
   }
 }

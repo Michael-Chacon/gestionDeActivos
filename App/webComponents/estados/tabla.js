@@ -1,4 +1,5 @@
 import { getData } from "../../../Api/ApiActivos.js";
+import { deleteData } from "../../../Api/ApiActivos.js";
 import { guardarDatos } from "../../../js/app.js";
 
 class TablaEstados extends HTMLElement {
@@ -7,6 +8,7 @@ class TablaEstados extends HTMLElement {
     this.render();
     this.datosFormulario();
     this.modal();
+    this.detectarClick();
   }
 
   render() {
@@ -70,10 +72,28 @@ class TablaEstados extends HTMLElement {
       <p><small class="item-estado">Id: </small>${dato.id}</p>
       <div class="opciones-estado">
         <button class="editar"><i class='bx bx-edit-alt'></i>Editar</button>
-        <button class="eliminar"><i class="bx bx-trash"></i>Eliminar</button>
+        <button class="eliminar" id="${dato.id}"><i class="bx bx-trash"></i>Eliminar</button>
       </div>
     </div>
       `;
+    });
+  }
+
+  detectarClick() {
+    const areaPrincipal = document.querySelector(".main-estado");
+    areaPrincipal.addEventListener("click", (e) => {
+      if (e.target.classList.contains("eliminar")) {
+        const pregunta = confirm(
+          "¿Está seguro de que quiere borrar este estado?"
+        );
+        if (pregunta) {
+          const id = e.target.id;
+          deleteData(id, "status");
+          setTimeout(async () => {
+            await this.renderUpdatedData();
+          }, 100);
+        }
+      }
     });
   }
 
