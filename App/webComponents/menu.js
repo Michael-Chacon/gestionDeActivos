@@ -32,6 +32,12 @@ class MenuNavegacion extends HTMLElement {
       </li>
       <li>
         <a class="contenidoLista" href="#">
+          <i class='bx bxs-category'></i>
+          <p>Categoria Activos</p>
+        </a>
+      </li>
+      <li>
+        <a class="contenidoLista" href="#">
           <i class="bx bxl-medium-square"></i>
           <p>Marcas</p>
         </a>
@@ -44,7 +50,7 @@ class MenuNavegacion extends HTMLElement {
       </li>
       <li>
         <a class="contenidoLista" href="#">
-          <i class="bx bxs-face"></i>
+          <i class='bx bxs-category-alt' ></i>
           <p>Proveedor</p>
         </a>
       </li>
@@ -91,6 +97,10 @@ class MenuNavegacion extends HTMLElement {
           console.log("Activos");
           mainContent.innerHTML = "<tabla-activos></tabla-activos>";
           break;
+        case "Categoria Activos":
+            console.log("categoriaActivos");
+            mainContent.innerHTML = "<tabla-categoria-activo></tabla-categoria-activo>";
+            break;
         case "Marcas":
           mainContent.innerHTML = "<tabla-marcas></tabla-marcas>";
           break;
