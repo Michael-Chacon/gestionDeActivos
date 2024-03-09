@@ -30,6 +30,18 @@ export class MainComponent extends HTMLElement {
         </ul>
       </li>
       <li>
+      <a href="#"
+        ><i class="bx bxs-inbox icon"></i> Estados
+        <i class="bx bx-chevron-right icon-right"></i
+      ></a>
+      <ul class="side-dropdown">
+        <li><a href="#" class="estado agregar">Agregar</a></li>
+        <li><a href="#" class="estado editar">Editar</a></li>
+        <li><a href="#" class="estado eliminar">Eliminar</a></li>
+        <li><a href="#" class="estado buscar">Buscar</a></li>
+      </ul>
+    </li>
+      <li>
         <a href="#"
           ><i class="bx bxs-inbox icon"></i> Personas
           <i class="bx bx-chevron-right icon-right"></i
@@ -88,18 +100,6 @@ export class MainComponent extends HTMLElement {
         <li><a href="#" class="tipo-persona eliminar">Eliminar</a></li>
         <li><a href="#" class="tipo-persona buscar">Buscar</a></li>
       </ul>
-      </li>
-      <li>
-        <a href="#"
-          ><i class="bx bxs-inbox icon"></i> Estados
-          <i class="bx bx-chevron-right icon-right"></i
-        ></a>
-        <ul class="side-dropdown">
-          <li><a href="#" class="estado agregar">Agregar</a></li>
-          <li><a href="#" class="estado editar">Editar</a></li>
-          <li><a href="#" class="estado eliminar">Eliminar</a></li>
-          <li><a href="#" class="estado buscar">Buscar</a></li>
-        </ul>
       </li>
       <li>
         <a href="#"
@@ -166,8 +166,10 @@ export class MainComponent extends HTMLElement {
       const subOpcion = e.target.classList[1];
       const main = document.querySelector(".main");
       if (e.target.classList[0] === "estado") {
-        console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
-        main.innerHTML = `<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`;
+        console.log(
+          `<${subOpcion}-${opciones} endPoint="status"></${subOpcion}-${opciones}>`
+        );
+        main.innerHTML = `<${subOpcion}-${opciones} endPoint="status"></${subOpcion}-${opciones}>`;
       } else if (e.target.classList[0] === "tipo-persona") {
         console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
       } else if (e.target.classList[0] === "activos") {

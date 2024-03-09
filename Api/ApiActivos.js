@@ -38,6 +38,7 @@ export function postData(data, endpoint) {
 }
 
 export function updateData(data, endpoint, id) {
+  console.log(id);
   try {
     fetch(`${URL_BASE}/${endpoint}/${id}`, {
       method: "PUT",
@@ -67,13 +68,13 @@ export async function getOneData(id, endpoint) {
   }
 }
 
-export function deleteData(id, endpoint){
-  try{
+export function deleteData(id, endpoint) {
+  try {
     fetch(`${URL_BASE}/${endpoint}/${id}`, {
       method: "DELETE",
-      headers: headers
-    })
-  }catch(error){
-    console.log(error)
+      headers: headers,
+    });
+  } catch (error) {
+    console.log(error);
   }
 }

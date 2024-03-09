@@ -1,123 +1,139 @@
 {
-    "assets": [
-        {
-            "id": "01",
-            "transactionCod": "0001",
-            "formNumber": "1000",
-            "brandId": "1",
-            "categoryAssetId": "1",
-            "tipyAssetId": "1",
-            "unitValue": "666",
-            "supplierId": "1",
-            "serialNumber": "0000",
-            "companyId" : "1",
-            "statuId": "2"
-        }
-    ],
-    "suppliers": [
-        {
-            "id": "1",
-            "name": "Duván",
-            "email": "jadklfjdlf"
-        }
-    ],
-    "brands": [
-        {
-            "id": "1",
-            "name": "acer"
-        }
-    ],
-    "status": [
-        {
-            "id": "1",
-            "name": "No asignado"
-        },
-        {
-            "id": "2",
-            "name": "Asignado"
-        },
-        {
-            "id": "3",
-            "name": "Dado de baja por daño"
-        },
-        {
-            "id": "4",
-            "name": "En reparación y/oGarantia"
-        }
-    ],
-    "assignments": [
-        {
-            "id": "",
-            "date": "",
-            "responsibleId": ""
-        }
-    ],
-    "people": [
-        {
-            "id": "",
-            "name": "",
-            "email": "",
-            "typoPersonId": ""
-        }
-    ],
-    "categoryAssets": [
-        {
-            "id": "1",
-            "name": "juegos"
-        }
-    ],
-    "typePeople": [
-        {
-            "id": "1",
-            "name": "jurídicas "
-        },
-        {
-            "id": "2",
-            "name": "natural"
-        }
-    ],
-    "typeMovAssets": [
-        {
-            "id": "",
-            "name": ""
-        }
-    ],
-    "recordAssets": [
-        {
-            "id": "",
-            "assetId": "",
-            "date": "",
-            "responsibleId": "",
-            "statusId": ""
-        }
-    ],
-    "phonePeople": [
-        {
-            "id": "",
-            "number": "",
-            "location": "",
-            "personId": ""
-        }
-    ],
-    "tipyAssets": [
-        {
-            "id": "1",
-            "name": "Electrodomestico"
-        }
-    ],
-    "detailMovements": [
-        {
-            "id": "",
-            "date": "",
-            "assetId": "",
-            "comment": "",
-            "assignmentId": ""
-        }
-    ],
-    "companies":[
-        {
-            "id": "1",
-            "name": "Campuslands"
-        }
-    ]
+  "assets": [
+    {
+      "id": "01",
+      "transactionCod": "0001",
+      "formNumber": "1000",
+      "brandId": "1",
+      "categoryAssetId": "1",
+      "tipyAssetId": "1",
+      "unitValue": "666",
+      "supplierId": "1",
+      "serialNumber": "0000",
+      "companyId": "1",
+      "statuId": "2"
+    }
+  ],
+  "suppliers": [
+    {
+      "id": "1",
+      "name": "Duván",
+      "email": "jadklfjdlf"
+    }
+  ],
+  "brands": [
+    {
+      "id": "1",
+      "name": "acer"
+    }
+  ],
+  "status": [
+    {
+      "id": "1",
+      "name": "No asignado"
+    },
+    {
+      "id": "2",
+      "name": "Asignado"
+    },
+    {
+      "id": "3",
+      "name": "Dado de baja por daño"
+    },
+    {
+      "id": "4",
+      "name": "En reparación y/oGarantia"
+    },
+    {
+      "id": "258e",
+      "name": "1"
+    },
+    {
+      "id": "e094",
+      "name": "Michael Chacón"
+    },
+    {
+      "id": "9916",
+      "name": "Michael Chacón"
+    },
+    {
+      "id": "2d4d",
+      "name": "app.js"
+    }
+  ],
+  "assignments": [
+    {
+      "id": "",
+      "date": "",
+      "responsibleId": ""
+    }
+  ],
+  "people": [
+    {
+      "id": "",
+      "name": "",
+      "email": "",
+      "typoPersonId": ""
+    }
+  ],
+  "categoryAssets": [
+    {
+      "id": "1",
+      "name": "juegos"
+    }
+  ],
+  "typePeople": [
+    {
+      "id": "1",
+      "name": "jurídicas "
+    },
+    {
+      "id": "2",
+      "name": "natural"
+    }
+  ],
+  "typeMovAssets": [
+    {
+      "id": "",
+      "name": ""
+    }
+  ],
+  "recordAssets": [
+    {
+      "id": "",
+      "assetId": "",
+      "date": "",
+      "responsibleId": "",
+      "statusId": ""
+    }
+  ],
+  "phonePeople": [
+    {
+      "id": "",
+      "number": "",
+      "location": "",
+      "personId": ""
+    }
+  ],
+  "tipyAssets": [
+    {
+      "id": "1",
+      "name": "Electrodomestico"
+    }
+  ],
+  "detailMovements": [
+    {
+      "id": "",
+      "date": "",
+      "assetId": "",
+      "comment": "",
+      "assignmentId": ""
+    }
+  ],
+  "companies": [
+    {
+      "id": "1",
+      "name": "Campuslands"
+    }
+  ]
 }
