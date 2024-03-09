@@ -1,4 +1,5 @@
 import "/App/webComponents/main/main.js";
+import "/App/webComponents/pruebas/pruebas.js";
 import "/App/webComponents/menu.js";
 import "/App/webComponents/footer.js";
 import "/App/webComponents/categoriaActivo/categoriaActivo.js";

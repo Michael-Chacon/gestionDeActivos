@@ -23,10 +23,10 @@ export class MainComponent extends HTMLElement {
           <i class="bx bx-chevron-right icon-right"></i
         ></a>
         <ul class="side-dropdown">
-          <li><a href="#">Agregar</a></li>
-          <li><a href="#">Editar</a></li>
-          <li><a href="#">Eliminar</a></li>
-          <li><a href="#">Buscar</a></li>
+          <li><a href="#" class="activos agregar">Agregar</a></li>
+          <li><a href="#" class="activos editar">Editar</a></li>
+          <li><a href="#" class="activos eliminar">Eliminar</a></li>
+          <li><a href="#" class="activos buscar">Buscar</a></li>
         </ul>
       </li>
       <li>
@@ -35,10 +35,10 @@ export class MainComponent extends HTMLElement {
           <i class="bx bx-chevron-right icon-right"></i
         ></a>
         <ul class="side-dropdown">
-          <li><a href="#">Agregar</a></li>
-          <li><a href="#">Editar</a></li>
-          <li><a href="#">Eliminar</a></li>
-          <li><a href="#">Buscar</a></li>
+          <li><a href="#" class="persona agregar">Agregar</a></li>
+          <li><a href="#" class="persona editar">Editar</a></li>
+          <li><a href="#" class="persona eliminar">Eliminar</a></li>
+          <li><a href="#" class="persona buscar">Buscar</a></li>
         </ul>
       </li>
       <li>
@@ -47,10 +47,10 @@ export class MainComponent extends HTMLElement {
           <i class="bx bx-chevron-right icon-right"></i
         ></a>
         <ul class="side-dropdown">
-          <li><a href="#">Agregar</a></li>
-          <li><a href="#">Editar</a></li>
-          <li><a href="#">Eliminar</a></li>
-          <li><a href="#">Buscar</a></li>
+        <li><a href="#" class="proveedor agregar">Agregar</a></li>
+        <li><a href="#" class="proveedor editar">Editar</a></li>
+        <li><a href="#" class="proveedor eliminar">Eliminar</a></li>
+        <li><a href="#" class="proveedor buscar">Buscar</a></li>
         </ul>
       </li>
       <li>
@@ -59,22 +59,10 @@ export class MainComponent extends HTMLElement {
           <i class="bx bx-chevron-right icon-right"></i
         ></a>
         <ul class="side-dropdown">
-          <li><a href="#">Agregar</a></li>
-          <li><a href="#">Editar</a></li>
-          <li><a href="#">Eliminar</a></li>
-          <li><a href="#">Buscar</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#"
-          ><i class="bx bxs-inbox icon"></i> Estados
-          <i class="bx bx-chevron-right icon-right"></i
-        ></a>
-        <ul class="side-dropdown">
-          <li><a href="#">Agregar</a></li>
-          <li><a href="#">Editar</a></li>
-          <li><a href="#">Eliminar</a></li>
-          <li><a href="#">Buscar</a></li>
+          <li><a href="#" class="marca agregar">Agregar</a></li>
+          <li><a href="#" class="marca editar">Editar</a></li>
+          <li><a href="#" class="marca eliminar">Eliminar</a></li>
+          <li><a href="#" class="marca buscar">Buscar</a></li>
         </ul>
       </li>
       <li>
@@ -83,10 +71,10 @@ export class MainComponent extends HTMLElement {
           <i class="bx bx-chevron-right icon-right"></i
         ></a>
         <ul class="side-dropdown">
-          <li><a href="#">Agregar</a></li>
-          <li><a href="#">Editar</a></li>
-          <li><a href="#">Eliminar</a></li>
-          <li><a href="#">Buscar</a></li>
+        <li><a href="#" class="categoria-activo agregar">Agregar</a></li>
+        <li><a href="#" class="categoria-activo editar">Editar</a></li>
+        <li><a href="#" class="categoria-activo eliminar">Eliminar</a></li>
+        <li><a href="#" class="categoria-activo buscar">Buscar</a></li>
         </ul>
       </li>
       <li>
@@ -95,11 +83,11 @@ export class MainComponent extends HTMLElement {
           <i class="bx bx-chevron-right icon-right"></i
         ></a>
         <ul class="side-dropdown">
-          <li><a href="#">Agregar</a></li>
-          <li><a href="#">Editar</a></li>
-          <li><a href="#">Eliminar</a></li>
-          <li><a href="#">Buscar</a></li>
-        </ul>
+        <li><a href="#" class="tipo-persona agregar">Agregar</a></li>
+        <li><a href="#" class="tipo-persona editar">Editar</a></li>
+        <li><a href="#" class="tipo-persona eliminar">Eliminar</a></li>
+        <li><a href="#" class="tipo-persona buscar">Buscar</a></li>
+      </ul>
       </li>
       <li>
         <a href="#"
@@ -107,10 +95,10 @@ export class MainComponent extends HTMLElement {
           <i class="bx bx-chevron-right icon-right"></i
         ></a>
         <ul class="side-dropdown">
-          <li><a href="#">Agregar</a></li>
-          <li><a href="#">Editar</a></li>
-          <li><a href="#">Eliminar</a></li>
-          <li><a href="#">Buscar</a></li>
+          <li><a href="#" class="estado agregar">Agregar</a></li>
+          <li><a href="#" class="estado editar">Editar</a></li>
+          <li><a href="#" class="estado eliminar">Eliminar</a></li>
+          <li><a href="#" class="estado buscar">Buscar</a></li>
         </ul>
       </li>
       <li>
@@ -119,10 +107,10 @@ export class MainComponent extends HTMLElement {
           <i class="bx bx-chevron-right icon-right"></i
         ></a>
         <ul class="side-dropdown">
-          <li><a href="#">Agregar</a></li>
-          <li><a href="#">Editar</a></li>
-          <li><a href="#">Eliminar</a></li>
-          <li><a href="#">Buscar</a></li>
+        <li><a href="#" class="tipo-movimiento-activo agregar">Agregar</a></li>
+        <li><a href="#" class="tipo-movimiento-activo editar">Editar</a></li>
+        <li><a href="#" class="tipo-movimiento-activo eliminar">Eliminar</a></li>
+        <li><a href="#" class="tipo-movimiento-activo buscar">Buscar</a></li>
         </ul>
       </li>
       <li>
@@ -131,10 +119,10 @@ export class MainComponent extends HTMLElement {
           <i class="bx bx-chevron-right icon-right"></i
         ></a>
         <ul class="side-dropdown">
-          <li><a href="#">Agregar</a></li>
-          <li><a href="#">Editar</a></li>
-          <li><a href="#">Eliminar</a></li>
-          <li><a href="#">Buscar</a></li>
+        <li><a href="#" class="tipo-activo agregar">Agregar</a></li>
+        <li><a href="#" class="tipo-activo editar">Editar</a></li>
+        <li><a href="#" class="tipo-activo eliminar">Eliminar</a></li>
+        <li><a href="#" class="tipo-activo buscar">Buscar</a></li>
         </ul>
       </li>
     </ul>
@@ -167,12 +155,40 @@ export class MainComponent extends HTMLElement {
     <!-- NAVBAR -->
 
     <!-- MAIN -->
-    <main>
-     
+    <main class="main">
     </main>
     <!-- MAIN -->
   </section>
         `;
+    const padre = document.querySelector(".side-menu");
+    padre.addEventListener("click", (e) => {
+      const opciones = e.target.classList[0];
+      const subOpcion = e.target.classList[1];
+      const main = document.querySelector(".main");
+      if (e.target.classList[0] === "estado") {
+        console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
+        main.innerHTML = `<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`;
+      } else if (e.target.classList[0] === "tipo-persona") {
+        console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
+      } else if (e.target.classList[0] === "activos") {
+        main.innerHTML = `<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`;
+        console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
+      } else if (e.target.classList[0] === "persona") {
+        console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
+      } else if (e.target.classList[0] === "proveedor") {
+        console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
+      } else if (e.target.classList[0] === "marca") {
+        console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
+      } else if (e.target.classList[0] === "tipo-persona") {
+        console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
+      } else if (e.target.classList[0] === "tipo-movimiento-activo") {
+        console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
+      } else if (e.target.classList[0] === "tipo-activo") {
+        console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
+      } else if (e.target.classList[0] === "categoria-activo") {
+        console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
+      }
+    });
   }
 }
 

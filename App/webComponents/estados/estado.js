@@ -4,6 +4,32 @@ import { getOneData } from "../../../Api/ApiActivos.js";
 import { guardarDatos } from "../../../js/app.js";
 import { actualizarDatos } from "../../../js/app.js";
 
+export class AddEstado extends HTMLElement {
+  constructor() {
+    super();
+    this.render();
+  }
+  render() {
+    this.innerHTML = `
+    <section class="form">
+    <form action="#" id="formulario">
+      <label for="tarea">Tarea</label>
+      <input
+        type="text"
+        name="name"
+        class="tarea"
+        id="name"
+      />
+      <div class="botones">
+        <span class="btn cancelar">Cancelar</span>
+        <input class="btn guardar" type="submit" value="Registrar tarea"></input>
+      </div>
+    </form>
+  </section>
+    `;
+  }
+}
+
 class TablaEstados extends HTMLElement {
   constructor() {
     super();
@@ -195,3 +221,4 @@ class TablaEstados extends HTMLElement {
 }
 
 customElements.define("tabla-estados", TablaEstados);
+customElements.define("agregar-estado", AddEstado);
