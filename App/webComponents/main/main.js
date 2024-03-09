@@ -31,6 +31,18 @@ export class MainComponent extends HTMLElement {
       </li>
       <li>
       <a href="#"
+        ><i class="bx bxs-inbox icon"></i> Proveedor
+        <i class="bx bx-chevron-right icon-right"></i
+      ></a>
+      <ul class="side-dropdown">
+      <li><a href="#" class="proveedor agregar">Agregar</a></li>
+      <li><a href="#" class="proveedor editar">Editar</a></li>
+      <li><a href="#" class="proveedor eliminar">Eliminar</a></li>
+      <li><a href="#" class="proveedor buscar">Buscar</a></li>
+      </ul>
+    </li>
+      <li>
+      <a href="#"
         ><i class="bx bxs-inbox icon"></i> Estados
         <i class="bx bx-chevron-right icon-right"></i
       ></a>
@@ -127,18 +139,6 @@ export class MainComponent extends HTMLElement {
       </li>
       <li>
         <a href="#"
-          ><i class="bx bxs-inbox icon"></i> Proveedor
-          <i class="bx bx-chevron-right icon-right"></i
-        ></a>
-        <ul class="side-dropdown">
-        <li><a href="#" class="proveedor agregar">Agregar</a></li>
-        <li><a href="#" class="proveedor editar">Editar</a></li>
-        <li><a href="#" class="proveedor eliminar">Eliminar</a></li>
-        <li><a href="#" class="proveedor buscar">Buscar</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#"
           ><i class="bx bxs-inbox icon"></i> Tipo activo
           <i class="bx bx-chevron-right icon-right"></i
         ></a>
@@ -188,8 +188,6 @@ export class MainComponent extends HTMLElement {
     padre.addEventListener("click", (e) => {
       const opciones = e.target.classList[0];
       const subOpcion = e.target.classList[1];
-      console.log(`Opcion = ${opciones}`);
-      console.log(`Subopcion = ${subOpcion}`);
       const main = document.querySelector(".main");
       if (e.target.classList[0] === "estado") {
         main.innerHTML = `<${subOpcion}-generico endPoint="status"></${subOpcion}-${opciones}>`;
