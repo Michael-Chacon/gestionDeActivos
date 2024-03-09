@@ -1,6 +1,7 @@
 import { getData } from "../../../Api/ApiActivos.js";
 import { updateData } from "../../../Api/ApiActivos.js";
 import { guardarDatos } from "../../../js/app.js";
+import { deleteData } from "../../../Api/ApiActivos.js";
 export class AddProveedor extends HTMLElement {
   constructor() {
     super();
@@ -69,7 +70,7 @@ export class EditProveedor extends HTMLElement {
                 type="text"
                 name="name"
                 class="busqueda"
-                placeholder="Buscar por el id  o nombre del estado"
+                placeholder="Buscar por el id  o nombre "
                 required
             />
             <button type="button" class="buscar-item">
@@ -159,6 +160,96 @@ export class EditProveedor extends HTMLElement {
         notificacion.appendChild(p);
         setTimeout(() => {
           notificacion.removeChild(p);
+        }, 3000);
+      }
+      console.log(result);
+    });
+  }
+}
+
+export class DeleteProveedor extends HTMLElement {
+  constructor() {
+    super();
+    this.render();
+    this.eliminar();
+  }
+  render() {
+    this.innerHTML = `
+    <link rel="stylesheet" href="App/webComponents/proveedores/proveedor.css">
+        <section class="formulario">
+        <section class="header-estado">
+          <form action="#" class="formulario-header">
+            <input
+              type="search"
+              name="name"
+              class="busqueda"
+              placeholder="Buscar por el id  o nombre"
+              required
+            />
+            <button type="button" class="buscar-item">
+              <i class="bx bx-search"></i>Buscar
+            </button>
+          </form>
+        </section>
+        <div class="padreNotificacion">
+      </div>
+        <section class="main-content">
+        </section>
+      </section>
+        `;
+  }
+  eliminar() {
+    const btnBuscar = document.querySelector(".buscar-item");
+    btnBuscar.addEventListener("click", async (e) => {
+      const busqueda = document.querySelector(".busqueda").value;
+      console.log(busqueda);
+      const proveedores = await getData("suppliers");
+      let result = proveedores.filter(
+        (item) =>
+          item.name.toLowerCase().startsWith(busqueda.toLowerCase()) ||
+          item.id.toLowerCase().startsWith(busqueda.toLowerCase())
+      );
+
+      const notificacion = document.querySelector(".padreNotificacion");
+      const p = document.createElement("P");
+
+      const areaPrincipal = document.querySelector(".main-content");
+      if (result.length === 1) {
+        areaPrincipal.innerHTML = `
+            <div class="card">
+            <p class="titulo-estado">${result[0].name}</p>
+            <p><small class="item-estado">${result[0].email}</small></p>
+            <div class="opciones-estado">
+              <button class="eliminarp" id="${result[0].id}"><i class="bx bx-trash"></i>Eliminar</button>
+            </div>
+          </div>
+            `;
+        areaPrincipal.addEventListener("click", (e) => {
+          if (e.target.classList.contains("eliminarp")) {
+            const pregunta = confirm(
+              "¿Está seguro de que quiere borrar este estado?"
+            );
+            if (pregunta) {
+              const id = e.target.id;
+              deleteData(id, "suppliers");
+              e.target.id = "";
+              areaPrincipal.innerHTML = "";
+              p.classList.add("notificacionF");
+              p.innerHTML = "Eliminado con éxito";
+              notificacion.appendChild(p);
+              setTimeout(() => {
+                notificacion.removeChild(p);
+              }, 3000);
+            }
+          }
+        });
+      } else {
+        p.classList.add("notificacionFail");
+        p.innerHTML = "Lo que buscas no existe";
+        areaPrincipal.innerHTML = "";
+        notificacion.appendChild(p);
+        setTimeout(() => {
+          notificacion.removeChild(p);
         }, 5000);
       }
       console.log(result);
@@ -168,3 +259,4 @@ export class EditProveedor extends HTMLElement {
 
 customElements.define("agregar-proveedor", AddProveedor);
 customElements.define("editar-proveedor", EditProveedor);
+customElements.define("eliminar-proveedor", DeleteProveedor);
