@@ -8,6 +8,7 @@ import { actualizarDatos } from "../../../js/app.js";
 export class AddStatus extends HTMLElement {
   constructor() {
     super();
+    this.endpoint = this.getAttribute("endPoint");
     this.render();
     this.datosFormulario();
   }
@@ -44,7 +45,7 @@ export class AddStatus extends HTMLElement {
     btnGuardar.addEventListener("click", async (e) => {
       e.stopImmediatePropagation();
       e.preventDefault();
-      guardarDatos(formulario, "status");
+      guardarDatos(formulario, this.endpoint);
 
       const notificacion = document.createElement("SECTION");
       notificacion.classList.add("notificacion");
@@ -61,7 +62,7 @@ export class AddStatus extends HTMLElement {
   }
 }
 
-class EditStatus extends HTMLElement {
+export class EditStatus extends HTMLElement {
   constructor() {
     super();
     this.endpoint = this.getAttribute("endPoint");
@@ -166,7 +167,7 @@ class EditStatus extends HTMLElement {
     const titulo = document.querySelector(".titulo");
     datosDiv.innerHTML = "";
     titulo.innerHTML = `${this.endpoint} registrados`;
-    const datos = await getData("status");
+    const datos = await getData(this.endpoint);
     if (datos.length != 0) {
       datos.forEach((dato) => {
         datosDiv.innerHTML += `
@@ -183,6 +184,96 @@ class EditStatus extends HTMLElement {
   </div>
     `;
     }
+  }
+}
+
+export class DeleteData extends HTMLElement {
+  constructor() {
+    super();
+    this.endpoint = this.getAttribute("endPoint");
+    this.render();
+    this.eliminar();
+  }
+
+  render() {
+    this.innerHTML = `
+    <link rel="stylesheet" href="App/webComponents/estados/estado.css">
+    <section id="notificacion">
+    </section>
+    <section class="header-estado">
+    <form action="#" class="formulario-header">
+    <input type="text" name="name" class="busqueda" placeholder="Buscar por el id  o nombre" required>
+    <button type="submit" class="buscar-item"><i class='bx bx-search'></i>Buscar</button>
+    </form>
+  </section>   
+  <section class="error"></section>
+  <section class="main-estado"></section>
+    `;
+  }
+
+  eliminar() {
+    const btnBuscar = document.querySelector(".buscar-item");
+    btnBuscar.addEventListener("click", async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const textoABuscar = document.querySelector(".busqueda").value;
+      console.log(textoABuscar);
+      const estados = await getData(this.endpoint);
+      console.log(estados);
+      const busqueda = textoABuscar.trim();
+      let result = estados.filter(
+        (estado) =>
+          estado.name.toLowerCase().startsWith(busqueda.toLowerCase()) ||
+          estado.id.toLowerCase().startsWith(busqueda.toLowerCase())
+      );
+
+      console.log(result);
+      const datosDiv = this.querySelector(".main-estado");
+      datosDiv.innerHTML = "";
+      if (result.length === 1) {
+        datosDiv.innerHTML += `
+          <div class="card-estado">
+          <p class="titulo-estado">${result[0].name}</p>
+          <p><small class="item-estado">Id: </small>${result[0].id}</p>
+          <div class="opciones-estado">
+            <button class="eliminar" id="${result[0].id}"><i class="bx bx-trash"></i>Eliminar</button>
+          </div>
+        </div>
+          `;
+
+        // const datosDiv = document.querySelector(".main-estado");
+        datosDiv.addEventListener("click", (e) => {
+          if (e.target.classList.contains("eliminar")) {
+            const pregunta = confirm(
+              "¿Está seguro de que quiere borrar este estado?"
+            );
+            if (pregunta) {
+              const id = e.target.id;
+              deleteData(id, this.endpoint);
+              datosDiv.innerHTML = "";
+              const seccionNotificacion =
+                document.querySelector("#notificacion");
+              const notificacion = document.createElement("SECTION");
+              notificacion.classList.add("notificacion");
+              const mensaje = document.createElement("P");
+              mensaje.textContent = "Eliminado con éxito";
+              notificacion.appendChild(mensaje);
+              seccionNotificacion.appendChild(notificacion);
+              console.log("New");
+              setTimeout(() => {
+                seccionNotificacion.removeChild(notificacion);
+              }, 3000);
+            }
+          }
+        });
+      } else {
+        datosDiv.innerHTML += `
+        <div class="card-estado">
+        <p class="titulo-estado">No se encontraron resultados</p>
+      </div>
+        `;
+      }
+    });
   }
 }
 
@@ -377,5 +468,6 @@ class TablaEstados extends HTMLElement {
 }
 
 // customElements.define("tabla-estados", TablaEstados);
-customElements.define("agregar-estado", AddStatus);
-customElements.define("editar-estado", EditStatus);
+customElements.define("agregar-generico", AddStatus);
+customElements.define("editar-generico", EditStatus);
+customElements.define("eliminar-generico", DeleteData);

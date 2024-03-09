@@ -1,0 +1,55 @@
+.formulario{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#formulario{
+    padding: 20px;
+    width: 40%;
+}
+
+.inputs{
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputs input{
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #7952B3;
+}
+
+.inputs input:focus{
+    padding: 15px;
+    border-radius: 10px;
+    outline: 1px solid #7952B3;
+}
+
+.btn-registrarF{
+    width: 100%;
+    border-radius: 10px;
+    transition: all ease 0.5s;
+    background-color: #7952B3;
+    color: white;
+    padding: 10px 0;
+    border: none;
+}
+
+.btn-registrarF:hover{
+    background-color:  rgb(10 207 151);
+    cursor: pointer;
+}
+
+.notificacionF{
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+    padding: 8px;
+    background-color: rgb(10 207 151);
+    color: white;
+    border-radius: 8px;
+}

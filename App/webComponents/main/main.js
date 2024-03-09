@@ -41,6 +41,78 @@ export class MainComponent extends HTMLElement {
         <li><a href="#" class="estado buscar">Buscar</a></li>
       </ul>
     </li>
+    <li>
+      <a href="#"
+        ><i class="bx bxs-inbox icon"></i> Marcas
+        <i class="bx bx-chevron-right icon-right"></i
+      ></a>
+      <ul class="side-dropdown">
+        <li><a href="#" class="marca agregar">Agregar</a></li>
+        <li><a href="#" class="marca editar">Editar</a></li>
+        <li><a href="#" class="marca eliminar">Eliminar</a></li>
+        <li><a href="#" class="marca buscar">Buscar</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#"
+        ><i class="bx bxs-inbox icon"></i> Área
+        <i class="bx bx-chevron-right icon-right"></i
+      ></a>
+      <ul class="side-dropdown">
+        <li><a href="#" class="area agregar">Agregar</a></li>
+        <li><a href="#" class="area editar">Editar</a></li>
+        <li><a href="#" class="area eliminar">Eliminar</a></li>
+        <li><a href="#" class="area buscar">Buscar</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#"
+        ><i class="bx bxs-inbox icon"></i> Categoria Activos
+        <i class="bx bx-chevron-right icon-right"></i
+      ></a>
+      <ul class="side-dropdown">
+      <li><a href="#" class="categoria-activo agregar">Agregar</a></li>
+      <li><a href="#" class="categoria-activo editar">Editar</a></li>
+      <li><a href="#" class="categoria-activo eliminar">Eliminar</a></li>
+      <li><a href="#" class="categoria-activo buscar">Buscar</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#"
+        ><i class="bx bxs-inbox icon"></i> Tipo Persona
+        <i class="bx bx-chevron-right icon-right"></i
+      ></a>
+      <ul class="side-dropdown">
+      <li><a href="#" class="tipo-persona agregar">Agregar</a></li>
+      <li><a href="#" class="tipo-persona editar">Editar</a></li>
+      <li><a href="#" class="tipo-persona eliminar">Eliminar</a></li>
+      <li><a href="#" class="tipo-persona buscar">Buscar</a></li>
+    </ul>
+    </li>
+    <li>
+      <a href="#"
+        ><i class="bx bxs-inbox icon"></i> Tipo Movimiento Activo
+        <i class="bx bx-chevron-right icon-right"></i
+      ></a>
+      <ul class="side-dropdown">
+      <li><a href="#" class="tipo-movimiento-activo agregar">Agregar</a></li>
+      <li><a href="#" class="tipo-movimiento-activo editar">Editar</a></li>
+      <li><a href="#" class="tipo-movimiento-activo eliminar">Eliminar</a></li>
+      <li><a href="#" class="tipo-movimiento-activo buscar">Buscar</a></li>
+      </ul>
+    </li>
+    <li>
+        <a href="#"
+          ><i class="bx bxs-inbox icon"></i> Tipo activo
+          <i class="bx bx-chevron-right icon-right"></i
+        ></a>
+        <ul class="side-dropdown">
+        <li><a href="#" class="tipo-activo agregar">Agregar</a></li>
+        <li><a href="#" class="tipo-activo editar">Editar</a></li>
+        <li><a href="#" class="tipo-activo eliminar">Eliminar</a></li>
+        <li><a href="#" class="tipo-activo buscar">Buscar</a></li>
+        </ul>
+      </li>
       <li>
         <a href="#"
           ><i class="bx bxs-inbox icon"></i> Personas
@@ -63,54 +135,6 @@ export class MainComponent extends HTMLElement {
         <li><a href="#" class="proveedor editar">Editar</a></li>
         <li><a href="#" class="proveedor eliminar">Eliminar</a></li>
         <li><a href="#" class="proveedor buscar">Buscar</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#"
-          ><i class="bx bxs-inbox icon"></i> Marcas
-          <i class="bx bx-chevron-right icon-right"></i
-        ></a>
-        <ul class="side-dropdown">
-          <li><a href="#" class="marca agregar">Agregar</a></li>
-          <li><a href="#" class="marca editar">Editar</a></li>
-          <li><a href="#" class="marca eliminar">Eliminar</a></li>
-          <li><a href="#" class="marca buscar">Buscar</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#"
-          ><i class="bx bxs-inbox icon"></i> Categoria Activos
-          <i class="bx bx-chevron-right icon-right"></i
-        ></a>
-        <ul class="side-dropdown">
-        <li><a href="#" class="categoria-activo agregar">Agregar</a></li>
-        <li><a href="#" class="categoria-activo editar">Editar</a></li>
-        <li><a href="#" class="categoria-activo eliminar">Eliminar</a></li>
-        <li><a href="#" class="categoria-activo buscar">Buscar</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#"
-          ><i class="bx bxs-inbox icon"></i> Tipo Persona
-          <i class="bx bx-chevron-right icon-right"></i
-        ></a>
-        <ul class="side-dropdown">
-        <li><a href="#" class="tipo-persona agregar">Agregar</a></li>
-        <li><a href="#" class="tipo-persona editar">Editar</a></li>
-        <li><a href="#" class="tipo-persona eliminar">Eliminar</a></li>
-        <li><a href="#" class="tipo-persona buscar">Buscar</a></li>
-      </ul>
-      </li>
-      <li>
-        <a href="#"
-          ><i class="bx bxs-inbox icon"></i> Tipo Movimiento Activo
-          <i class="bx bx-chevron-right icon-right"></i
-        ></a>
-        <ul class="side-dropdown">
-        <li><a href="#" class="tipo-movimiento-activo agregar">Agregar</a></li>
-        <li><a href="#" class="tipo-movimiento-activo editar">Editar</a></li>
-        <li><a href="#" class="tipo-movimiento-activo eliminar">Eliminar</a></li>
-        <li><a href="#" class="tipo-movimiento-activo buscar">Buscar</a></li>
         </ul>
       </li>
       <li>
@@ -164,30 +188,38 @@ export class MainComponent extends HTMLElement {
     padre.addEventListener("click", (e) => {
       const opciones = e.target.classList[0];
       const subOpcion = e.target.classList[1];
+      console.log(`Opcion = ${opciones}`);
+      console.log(`Subopcion = ${subOpcion}`);
       const main = document.querySelector(".main");
       if (e.target.classList[0] === "estado") {
-        console.log(
-          `<${subOpcion}-${opciones} endPoint="status"></${subOpcion}-${opciones}>`
-        );
-        main.innerHTML = `<${subOpcion}-${opciones} endPoint="status"></${subOpcion}-${opciones}>`;
+        main.innerHTML = `<${subOpcion}-generico endPoint="status"></${subOpcion}-${opciones}>`;
       } else if (e.target.classList[0] === "tipo-persona") {
-        console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
-      } else if (e.target.classList[0] === "activos") {
-        main.innerHTML = `<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`;
         console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
       } else if (e.target.classList[0] === "persona") {
         console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
       } else if (e.target.classList[0] === "proveedor") {
         console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
+        main.innerHTML = `<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`;
       } else if (e.target.classList[0] === "marca") {
+        main.innerHTML = `<${subOpcion}-generico endPoint="brands"></${subOpcion}-${opciones}>`;
+        console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
+      } else if (e.target.classList[0] === "area") {
+        main.innerHTML = `<${subOpcion}-generico endPoint="areas"></${subOpcion}-${opciones}>`;
         console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
       } else if (e.target.classList[0] === "tipo-persona") {
+        main.innerHTML = `<${subOpcion}-generico endPoint="typePeople"></${subOpcion}-${opciones}>`;
         console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
       } else if (e.target.classList[0] === "tipo-movimiento-activo") {
+        main.innerHTML = `<${subOpcion}-generico endPoint="typeMovAssets"></${subOpcion}-${opciones}>`;
         console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
       } else if (e.target.classList[0] === "tipo-activo") {
+        main.innerHTML = `<${subOpcion}-generico endPoint="tipyAssets"></${subOpcion}-${opciones}>`;
         console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
       } else if (e.target.classList[0] === "categoria-activo") {
+        main.innerHTML = `<${subOpcion}-generico endPoint="categoryAssets"></${subOpcion}-${opciones}>`;
+        console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
+      } else if (e.target.classList[0] === "activos") {
+        main.innerHTML = `<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`;
         console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
       }
     });

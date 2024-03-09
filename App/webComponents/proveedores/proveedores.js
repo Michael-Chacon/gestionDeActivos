@@ -1,47 +1,53 @@
-class TablaProveedores extends HTMLElement {
-    constructor () {
-        super();
-        this.render()
-    }
+import { guardarDatos } from "../../../js/app.js";
+export class Proveedor extends HTMLElement {
+  constructor() {
+    super();
+    this.render();
+    this.registrar();
+  }
 
-    render() {
-        this.innerHTML = `
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="App/webComponents/activos/activos.css">
-    </head>
-
-    <header class="contenedor">
-        <button>Agregar</button>
-        <div >
-            <input class="entradaBuscar" type="text" placeholder="Ingrese su búsqueda">
-            <button class = "btnBuscar">Buscar</button>
+  render() {
+    this.innerHTML = `
+    <link rel="stylesheet" href="App/webComponents/proveedores/proveedor.css">
+        <section class="formulario">
+      <form action="#" id="formulario">
+        <div class="inputs">
+          <laber>Nombre: </laber>
+          <input type="text" name="name" id="name" class="form-input" required/>
         </div>
-    </header>
+        <div class="inputs">
+          <label for="email">Email:</label>
+          <input type="email" name="email" id="email" class="form-input" required/>
+        </div>
+        <button type="submit" class="btn-registrarF">Registrar</button>
+        <div class="padreNotificacion">
+        </div>
+      </form>
+    </section>
+        `;
+  }
 
-    <table>
-        <thead>
-            <tr>
-                <th >id</th>
-                <th>Nombre</th>
-                <th>Email</th>
-                <!-- acá va el idTipoPersona -->
-                <th class="opciones" colspan="2">Opciones</th>
-            </tr>
-        </thead>
+  registrar() {
+    const formulario = document.querySelector("#formulario");
+    formulario.addEventListener("submit", (e) => {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      guardarDatos(formulario, "suppliers");
+      const inputName = document.querySelector("#name");
+      const inputEmail = document.querySelector("#email");
+      inputName.value = "";
+      inputEmail.value = "";
 
-        <tbody>
-            <tr>
-                <td>5654</td>
-                <td>Compulog</td>
-                <td>dccar21@gmail.com</td>
-                <td><button class="editar">Editar</button></td>
-                <td><button class="eliminar">Eliminar</button></td>
-            </tr>
-        </tbody>
-    </table>`
-    }
+      const notificacion = document.querySelector(".padreNotificacion");
+      const p = document.createElement("P");
+      p.classList.add("notificacionF");
+      p.innerHTML = "Registrado con éxito";
+      notificacion.appendChild(p);
+      setTimeout(() => {
+        notificacion.removeChild(p);
+      }, 3000);
+    });
+  }
 }
-customElements.define('tabla-proveedores', TablaProveedores)
+
+customElements.define("agregar-proveedor", Proveedor);
