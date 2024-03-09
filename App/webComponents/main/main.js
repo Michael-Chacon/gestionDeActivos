@@ -191,7 +191,7 @@ export class MainComponent extends HTMLElement {
       const main = document.querySelector(".main");
       if (e.target.classList[0] === "estado") {
         main.innerHTML = `<${subOpcion}-generico endPoint="status"></${subOpcion}-${opciones}>`;
-      } else if (e.target.classList[0] === "tipo-persona") {
+      } else if (e.target.classList[0] === "tipo-personaMAL") {
         console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
       } else if (e.target.classList[0] === "persona") {
         console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
