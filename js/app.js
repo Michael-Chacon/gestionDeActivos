@@ -16,14 +16,12 @@ import { getData } from "../../../Api/ApiActivos.js";
 export function guardarDatos(formulario, endpoint) {
   const getDataForm = new FormData(formulario);
   const data = Object.fromEntries(getDataForm);
-  console.log(data);
   postData(data, endpoint);
 }
 
 export async function llenarSelect(endpoint, padre, id = null) {
   const datos = await getData(endpoint);
   if (id == null) {
-    console.log("NO hay id");
     datos.forEach((item) => {
       const opcion = document.createElement("option");
       opcion.value = item.id;
@@ -31,7 +29,6 @@ export async function llenarSelect(endpoint, padre, id = null) {
       padre.appendChild(opcion);
     });
   } else {
-    console.log(id);
     datos.forEach((item) => {
       const opcion = document.createElement("option");
       if (item.id === id) {
