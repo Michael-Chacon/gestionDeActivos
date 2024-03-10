@@ -1,5 +1,7 @@
 import { getData } from "../../../Api/ApiActivos.js";
 import { updateData } from "../../../Api/ApiActivos.js";
+import { getOneData } from "../../../Api/ApiActivos.js";
+import { deleteData } from "../../../Api/ApiActivos.js";
 import { llenarSelect } from "../../../js/app.js";
 import { guardarDatos } from "../../../js/app.js";
 export class AddActivo extends HTMLElement {
@@ -344,5 +346,132 @@ export class EditActivo extends HTMLElement {
     }
   }
 }
+
+export class DeleteActivo extends HTMLElement {
+  constructor() {
+    super();
+    this.render();
+    this.eliminar();
+  }
+  render() {
+    this.innerHTML = `
+    <link rel="stylesheet" href="App/webComponents/activos/activos.css">
+    <section class="formulario">
+    <section class="header-estado">
+      <form action="#" class="formulario-header">
+        <input
+          type="search"
+          name="name"
+          class="busqueda"
+          id="busqueda"
+          placeholder="Buscar por el id  o nombre del estado"
+          required
+        />
+        <button type="button" class="buscar-item">
+          <i class="bx bx-search"></i>Buscar
+        </button>
+      </form>
+    </section>
+    <div class="padreNotificacion">
+    </div>
+    <section class="main-content">
+      <table border>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Id</th>
+            <th>Núm. serial</th>
+            <th>Estado</th>
+            <th>Núm. formulario</th>
+            <th>Cod. transacción</th>
+            <th>Valor $</th>
+            <th>Empresa responsable</th>
+            <th>Marca</th>
+            <th>Categoria</th>
+            <th>Tipo</th>
+            <th>Proveedor</th>
+          </tr>
+        </thead>
+        <tbody id="tabla">
+        </tbody>
+      </table>
+    </section>
+  </section>
+    `;
+  }
+
+  async eliminar() {
+    const btnBuscar = document.querySelector(".buscar-item");
+    btnBuscar.addEventListener("click", async (e) => {
+      const busqueda = document.querySelector("#busqueda").value;
+      const proveedores = await getData("assets");
+      let result = proveedores.filter(
+        (item) =>
+          item.serialNumber.startsWith(busqueda) || item.id.startsWith(busqueda)
+      );
+      var notificacion = document.querySelector(".padreNotificacion");
+      const p = document.createElement("P");
+      console.log(result);
+
+      if (result.length === 1) {
+        console.log("here");
+
+        const tabla = document.querySelector("#tabla");
+        const marca = await getOneData(result[0].brandId, "brands");
+        const categoria = await getOneData(
+          result[0].categoryAssetId,
+          "categoryAssets"
+        );
+        const tipo = await getOneData(result[0].tipyAssetId, "tipyAssets");
+        const proveedor = await getOneData(result[0].supplierId, "suppliers");
+        const estado = await getOneData(result[0].statuId, "status");
+        console.log(estado.name);
+        tabla.innerHTML = ` <tr>
+        <td><button class="eliminar-activo" id="${result[0].id}">Eliminar</button></td>
+        <td>${result[0].id}</td>
+        <td>${result[0].serialNumber}</td>
+        <td class="estado-activo">${estado.name}</td>
+        <td>${result[0].formNumber}</td>
+        <td>${result[0].transactionCod}</td>
+        <td>${result[0].unitValue}</td>
+        <td>CampusLands</td>
+        <td>${marca.name}</td>
+        <td>${categoria.name}</td>
+        <td>${tipo.name}</td>
+        <td>${proveedor.name}</td>
+      </tr>`;
+
+        // Eliminar
+        tabla.addEventListener("click", (e) => {
+          if (e.target.classList.contains("eliminar-activo")) {
+            const idActivo = e.target.id;
+            const confirmacion = confirm(
+              "¿Seguro que desea eliminar el activo?"
+            );
+            if (confirmacion) {
+              deleteData(idActivo, "assets");
+              p.classList.add("notificacionF");
+              p.innerHTML = "Eliminado con éxito";
+              notificacion.appendChild(p);
+              setTimeout(() => {
+                notificacion.removeChild(p);
+              }, 3000);
+              tabla.innerHTML = "";
+            }
+          }
+        });
+      } else {
+        p.classList.add("notificacionFail");
+        p.innerHTML = "Lo que buscas no existe";
+        notificacion.appendChild(p);
+        setTimeout(() => {
+          notificacion.removeChild(p);
+        }, 3000);
+      }
+    });
+  }
+}
+
 customElements.define("agregar-activos", AddActivo);
 customElements.define("editar-activos", EditActivo);
+customElements.define("eliminar-activos", DeleteActivo);

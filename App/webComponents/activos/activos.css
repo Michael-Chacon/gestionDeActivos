@@ -141,4 +141,52 @@
     color: white;
 }
 
+.main-content{
+    margin-top: 30px;
+    width: 100%;
+    overflow-x: scroll;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+table {
+    border-collapse: collapse;
+    background-color: white;
+}
+
+th, td {
+    border: 1px solid rgb(182, 179, 179);
+    box-sizing: border-box;
+    padding: 7px 20px;
+    text-align: left;
+}
+th{
+    color: rgb(104, 103, 103);
+    font-size: 14px;
+}
+td{
+    font-size: 14px;
+}
+
+.eliminar-activo{
+    border: none;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    background-color: red;
+    color: white;
+    border-radius: 5PX;
+    transition: all ease-in 0.4s;
+}
+
+.eliminar-activo:hover{
+   cursor: pointer;
+    background-color: white;
+    color: red;
+    outline: 1px solid red;
+}
+
+.estado-activo{
+    font-weight: 600;
+}
+
+
 
