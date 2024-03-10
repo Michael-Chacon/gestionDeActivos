@@ -93,27 +93,23 @@ export class EditProveedor extends HTMLElement {
 
         <form action="#" id="formulario">
             <div class="inputs">
-            <laber>Nombre: </laber>
-            <input
-                type="text"
-                name="name"
-                id="name"
-                class="form-input name"
-                required
-            />
+                <label>Id:<small> Solo lectura</small> </label>
+                <input type="text" name="id" id="id" class="form-input" required readonly/>
+            </div>
+            <div class="inputs">
+            <label>Nombre: </label>
+            <input type="text" name="name" id="name" class="form-input" required/>
             </div>
             <div class="inputs">
             <label for="email">Email:</label>
-            <input
-                type="email"
-                name="email"
-                id="eamil"
-                class="form-input email"
-                required
-            />
+            <input type="email" name="email" id="email" class="form-input" required/>
             </div>
-            <input type="text" id="ide"  name="id" hidden />
-            <button type="submit" class="btn-registrarF">Actualizar</button>
+            <div class="inputs">
+            <label for="tipoPersona">Tipo persona:</label>
+            <select name="typoPersonId" id="tipoPersona" class="form-input" required>
+            </select>
+            </div>
+            <button type="submit" class="btn-registrarF">Registrar</button>
             <div class="padreNotificacion">
             </div>
         </form>
@@ -126,7 +122,7 @@ export class EditProveedor extends HTMLElement {
     btnBuscar.addEventListener("click", async (e) => {
       const busqueda = document.querySelector(".busqueda").value;
       console.log(busqueda);
-      const proveedores = await getData("suppliers");
+      const proveedores = await getData("people");
       let result = proveedores.filter(
         (item) =>
           item.name.toLowerCase().startsWith(busqueda.toLowerCase()) ||
@@ -137,12 +133,14 @@ export class EditProveedor extends HTMLElement {
       const p = document.createElement("P");
 
       if (result.length === 1) {
-        const name = document.querySelector(".name");
-        const email = document.querySelector(".email");
-        const idHidden = document.querySelector("#ide");
+        const name = document.querySelector("#name");
+        const email = document.querySelector("#email");
+
+        const id = document.querySelector("#id");
         name.value = result[0].name;
         email.value = result[0].email;
-        idHidden.value = result[0].id;
+        id.value = result[0].id;
+        this.llenarCompo(result[0].typoPersonId);
         // Actulizar datos
         const formulario = document.querySelector("#formulario");
         formulario.addEventListener("submit", (e) => {
@@ -150,19 +148,15 @@ export class EditProveedor extends HTMLElement {
           e.stopImmediatePropagation();
           const datos = new FormData(formulario);
           const datosFormato = Object.fromEntries(datos);
-          let idP = datosFormato.id;
-          const objeto = {
-            name: datosFormato.name,
-            email: datosFormato.email,
-          };
-          updateData(objeto, "suppliers", idP);
+          const { id, ...objeto } = datosFormato;
+          updateData(objeto, "people", id);
+          formulario.reset();
+          const tipoPersona = document.querySelector("#tipoPersona");
+          this.limpiarSelects(tipoPersona);
           p.classList.add("notificacionF");
           p.innerHTML = "Actualización exitosa";
           notificacion.appendChild(p);
           setTimeout(() => {
-            name.value = "";
-            email.value = "";
-            idHidden.value = "";
             notificacion.removeChild(p);
           }, 3000);
         });
@@ -176,6 +170,17 @@ export class EditProveedor extends HTMLElement {
       }
       console.log(result);
     });
+  }
+
+  llenarCompo(id) {
+    const tipoPersona = document.querySelector("#tipoPersona");
+    llenarSelect("typePeople", tipoPersona, id);
+  }
+
+  limpiarSelects(padre) {
+    while (padre.firstChild) {
+      padre.removeChild(padre.firstChild);
+    }
   }
 }
 
