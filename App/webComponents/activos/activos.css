@@ -75,6 +75,16 @@
     border-radius: 8px;
 }
 
+.notificacionFail{
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+    padding: 8px;
+    background-color: rgb(219, 8, 8);
+    color: white;
+    border-radius: 8px;
+}
+
 /* buscar */
 
 .header-estado{

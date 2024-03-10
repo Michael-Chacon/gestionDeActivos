@@ -1,4 +1,5 @@
 import { getData } from "../../../Api/ApiActivos.js";
+import { updateData } from "../../../Api/ApiActivos.js";
 import { llenarSelect } from "../../../js/app.js";
 import { guardarDatos } from "../../../js/app.js";
 export class AddActivo extends HTMLElement {
@@ -165,14 +166,16 @@ export class EditActivo extends HTMLElement {
     <form action="#" id="formulario">
       <div class="padreNotificacion">
       </div>
+      <input type="text" name="ide" id="ide" hidden>
       <div class="inputs">
-        <label for="serialNumber">Nro serial: </label>
+        <label for="serialNumber" >Nro serial:<small> solo lectura</small> </label>
         <input
           type="number"
           name="serialNumber"
           id="serialNumber"
           class="form-input"
           required
+          readonly
         />
       </div>
       <div class="inputs">
@@ -256,9 +259,9 @@ export class EditActivo extends HTMLElement {
 
   buscar() {
     const btnBuscar = document.querySelector(".buscar-item");
+    var formulario = document.querySelector("#formulario");
     btnBuscar.addEventListener("click", async (e) => {
       const busqueda = document.querySelector("#busqueda").value;
-      console.log(busqueda);
       const proveedores = await getData("assets");
       let result = proveedores.filter(
         (item) =>
@@ -266,9 +269,8 @@ export class EditActivo extends HTMLElement {
       );
       const notificacion = document.querySelector(".padreNotificacion");
       const p = document.createElement("P");
-
+      formulario.reset();
       if (result.length === 1) {
-        console.log("here");
         let arrayIds = [];
         arrayIds.push(result[0].brandId);
         arrayIds.push(result[0].categoryAssetId);
@@ -276,13 +278,35 @@ export class EditActivo extends HTMLElement {
         arrayIds.push(result[0].supplierId);
         arrayIds.push(result[0].statuId);
         this.llenarCompos(arrayIds);
-        // updateData(objeto, "suppliers", idP);
-        p.classList.add("notificacionF");
-        p.innerHTML = "Actualización exitosa";
-        notificacion.appendChild(p);
-        setTimeout(() => {
-          notificacion.removeChild(p);
-        }, 3000);
+
+        // Agarrar los campos
+        const serialNumber = document.querySelector("#serialNumber");
+        const formNumber = document.querySelector("#formNumber");
+        const transactionCod = document.querySelector("#transactionCod");
+        const unitValue = document.querySelector("#unitValue");
+        const ide = document.querySelector("#ide");
+        serialNumber.value = result[0].serialNumber;
+        formNumber.value = result[0].formNumber;
+        transactionCod.value = result[0].transactionCod;
+        unitValue.value = result[0].unitValue;
+        ide.value = result[0].id;
+
+        //guardar los datos
+        formulario.addEventListener("submit", (e) => {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          const datos = new FormData(formulario);
+          const objetoDatos = Object.fromEntries(datos);
+          const { ide, ...otros } = objetoDatos;
+          updateData(otros, "assets", ide);
+          formulario.reset();
+          p.classList.add("notificacionF");
+          p.innerHTML = "Actualización exitosa";
+          notificacion.appendChild(p);
+          setTimeout(() => {
+            notificacion.removeChild(p);
+          }, 3000);
+        });
       } else {
         p.classList.add("notificacionFail");
         p.innerHTML = "Lo que buscas no existe";
@@ -291,22 +315,33 @@ export class EditActivo extends HTMLElement {
           notificacion.removeChild(p);
         }, 3000);
       }
-      console.log(result);
     });
   }
 
   llenarCompos(ids) {
-    console.log(ids);
     const marcaSelect = document.querySelector("#brandId");
     const categoriaSelect = document.querySelector("#categoryAssetId");
     const tipoSelect = document.querySelector("#tipyAssetId");
     const proveedorSelect = document.querySelector("#supplierId");
     const estadoSelect = document.querySelector("#statuId");
+
+    this.limpiarSelects(marcaSelect);
+    this.limpiarSelects(categoriaSelect);
+    this.limpiarSelects(tipoSelect);
+    this.limpiarSelects(proveedorSelect);
+    this.limpiarSelects(estadoSelect);
+
     llenarSelect("brands", marcaSelect, ids[0]);
     llenarSelect("categoryAssets", categoriaSelect, ids[1]);
     llenarSelect("tipyAssets", tipoSelect, ids[2]);
     llenarSelect("suppliers", proveedorSelect, ids[3]);
     llenarSelect("status", estadoSelect, ids[4]);
+  }
+
+  limpiarSelects(padre) {
+    while (padre.firstChild) {
+      padre.removeChild(padre.firstChild);
+    }
   }
 }
 customElements.define("agregar-activos", AddActivo);
