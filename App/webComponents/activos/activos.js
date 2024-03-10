@@ -301,6 +301,17 @@ export class EditActivo extends HTMLElement {
           const objetoDatos = Object.fromEntries(datos);
           const { ide, ...otros } = objetoDatos;
           updateData(otros, "assets", ide);
+          const marcaSelect = document.querySelector("#brandId");
+          const categoriaSelect = document.querySelector("#categoryAssetId");
+          const tipoSelect = document.querySelector("#tipyAssetId");
+          const proveedorSelect = document.querySelector("#supplierId");
+          const estadoSelect = document.querySelector("#statuId");
+
+          this.limpiarSelects(marcaSelect);
+          this.limpiarSelects(categoriaSelect);
+          this.limpiarSelects(tipoSelect);
+          this.limpiarSelects(proveedorSelect);
+          this.limpiarSelects(estadoSelect);
           formulario.reset();
           p.classList.add("notificacionF");
           p.innerHTML = "Actualización exitosa";

@@ -14,7 +14,7 @@ export class AddStatus extends HTMLElement {
   }
 
   render() {
-    this.innerHTML = `
+    this.innerHTML = /*html*/ `
     <link rel="stylesheet" href="App/webComponents/estados/estado.css">
     <section class="form">
     <section id="notificacion">
@@ -27,11 +27,10 @@ export class AddStatus extends HTMLElement {
         class="tarea"
         id="name"
         required
-        placeholder=""
       />
       <div class="botones">
         <span class="btn cancelar">Cancelar</span>
-        <input class="btn guardar" type="submit" value="Agregar" ></input>
+        <button class="btn guardar" type="submit" value="Agregar" >Agrdegar</button>
       </div>
     </form>
   </section>
@@ -45,18 +44,26 @@ export class AddStatus extends HTMLElement {
     btnGuardar.addEventListener("click", async (e) => {
       e.stopImmediatePropagation();
       e.preventDefault();
-      guardarDatos(formulario, this.endpoint);
-
       const notificacion = document.createElement("SECTION");
-      notificacion.classList.add("notificacion");
       const mensaje = document.createElement("P");
-      mensaje.textContent = "Estado registrado con éxito";
+      if (input.value === "") {
+        notificacion.classList.add("notificacionF");
+        mensaje.textContent = "El input está vacío";
+      } else {
+        guardarDatos(formulario, this.endpoint);
+        notificacion.classList.add("notificacion");
+        mensaje.textContent = "Estado registrado con éxito";
+        input.value = "";
+      }
       notificacion.appendChild(mensaje);
       seccionNotificacion.appendChild(notificacion);
       console.log("New");
       setTimeout(() => {
         seccionNotificacion.removeChild(notificacion);
       }, 3000);
+    });
+    const btnCancelar = document.querySelector(".cancelar");
+    btnCancelar.addEventListener("click", (e) => {
       input.value = "";
     });
   }
@@ -100,33 +107,40 @@ export class EditStatus extends HTMLElement {
     `;
   }
   buscador() {
-    console.log(this.endpoint);
+    var formularioHeader = document.querySelector(".formulario-header");
     const btnBuscar = document.querySelector(".buscar-item");
     const input = document.querySelector("#estado");
     const ide = document.querySelector("#ide");
     btnBuscar.addEventListener("click", async (e) => {
-      e.preventDefault();
-      e.stopPropagation();
       const textoABuscar = document.querySelector(".busqueda").value;
-      console.log(textoABuscar);
-      const estados = await getData(this.endpoint);
-      console.log(estados);
-      const busqueda = textoABuscar.trim();
-      let result = estados.filter(
-        (estado) =>
-          estado.name.toLowerCase().startsWith(busqueda.toLowerCase()) ||
-          estado.id.toLowerCase().startsWith(busqueda.toLowerCase())
-      );
-      const vacio = document.querySelector(".error");
-
-      input.value = "";
-      console.log(result);
-      if (result.length === 1) {
-        input.value = result[0].name;
-        ide.value = result[0].id;
-        vacio.innerHTML = "";
+      if (textoABuscar.trim() === "") {
+        alert("El input está vacío");
       } else {
-        vacio.innerHTML = "No se encontraron resultados para su busqueda";
+        e.preventDefault();
+        e.stopPropagation();
+        console.log(textoABuscar);
+        const estados = await getData(this.endpoint);
+        console.log(estados);
+        const busqueda = textoABuscar.trim();
+        let result = estados.filter(
+          (estado) =>
+            estado.name.toLowerCase().startsWith(busqueda.toLowerCase()) ||
+            estado.id.toLowerCase().startsWith(busqueda.toLowerCase())
+        );
+        const vacio = document.querySelector(".error");
+
+        input.value = "";
+        if (result.length === 1) {
+          input.value = result[0].name;
+          ide.value = result[0].id;
+          vacio.innerHTML = "";
+        } else {
+          vacio.innerHTML = "No se encontraron resultados para su busqueda";
+          setTimeout(() => {
+            vacio.innerHTML = "";
+          }, 4000);
+        }
+        formularioHeader.reset();
       }
     });
 

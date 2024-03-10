@@ -144,13 +144,11 @@ export class EditProveedor extends HTMLElement {
             email: datosFormato.email,
           };
           updateData(objeto, "suppliers", idP);
+          formulario.reset();
           p.classList.add("notificacionF");
           p.innerHTML = "Actualización exitosa";
           notificacion.appendChild(p);
           setTimeout(() => {
-            name.value = "";
-            email.value = "";
-            idHidden.value = "";
             notificacion.removeChild(p);
           }, 3000);
         });

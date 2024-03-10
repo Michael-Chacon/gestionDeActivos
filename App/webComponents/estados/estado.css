@@ -19,6 +19,16 @@
     border-radius: 10px;
 }
 
+.notificacionF{
+    background-color: red;
+    color: white;
+    width: 50%;
+    text-align: center;
+    padding: 10px 0;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
 dialog {
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
     position: fixed;
@@ -186,7 +196,7 @@ form .botones .cancelar:hover{
 
 .error{
     text-align: center;
-    font-size: 14px;
+    font-size: 12px;
     color: red;
 }
 
