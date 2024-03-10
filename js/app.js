@@ -11,11 +11,23 @@ import "/App/webComponents/tipoMovActivo/tipoMovActivo.js";
 import "/App/webComponents/tipoActivo/tipoActivo.js";
 import { postData } from "../../../Api/ApiActivos.js";
 import { updateData } from "../../../Api/ApiActivos.js";
+import { getData } from "../../../Api/ApiActivos.js";
 
 export function guardarDatos(formulario, endpoint) {
   const getDataForm = new FormData(formulario);
   const data = Object.fromEntries(getDataForm);
+  console.log(data);
   postData(data, endpoint);
+}
+
+export async function llenarSelect(endpoint, padre) {
+  const datos = await getData(endpoint);
+  datos.forEach((item) => {
+    const opcion = document.createElement("option");
+    opcion.value = item.id;
+    opcion.textContent = item.name;
+    padre.appendChild(opcion);
+  });
 }
 
 export function actualizarDatos(formulario, endpoint, id) {
