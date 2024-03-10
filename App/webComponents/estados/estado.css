@@ -48,14 +48,19 @@ form{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 }
 
 form .tarea{
     padding: 15px;
     border-radius: 5px;
     border: 1px solid #CCD3CA;
+    width: 50%;
 }
   
+#estado {
+    width: 100%;
+}
 
 form .fechas{
     display: grid;
@@ -279,6 +284,10 @@ form .botones .cancelar:hover{
 
 .card-estado .titulo-estado{
     font-size: 18px;
+}
+
+.titulo {
+    text-align: center;
 }
 
 .card-estado p .item-estado{

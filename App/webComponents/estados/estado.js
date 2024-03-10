@@ -20,18 +20,18 @@ export class AddStatus extends HTMLElement {
     <section id="notificacion">
     </section>
     <form action="#" id="formulario">
-      <label for="name">Agregar un nuevo estado</label>
+      <label for="name">Agregar uno nuevo</label>
       <input
         type="text"
         name="name"
         class="tarea"
         id="name"
         required
-        placeholder="Nombre del estado"
+        placeholder=""
       />
       <div class="botones">
         <span class="btn cancelar">Cancelar</span>
-        <input class="btn guardar" type="submit" value="Registrar tarea" ></input>
+        <input class="btn guardar" type="submit" value="Agregar" ></input>
       </div>
     </form>
   </section>
@@ -73,13 +73,13 @@ export class EditStatus extends HTMLElement {
 
   render() {
     this.innerHTML = `
-    ${this.endpoint}
+    
     <link rel="stylesheet" href="App/webComponents/estados/estado.css">
     <section id="notificacion">
     </section>
     <section class="header-estado">
       <form action="#" class="formulario-header">
-      <input type="text" name="name" class="busqueda" placeholder="Buscar por el id  o nombre del estado" required>
+      <input type="text" name="name" class="busqueda" placeholder="Buscar por id  o nombre" required>
       <button type="submit" class="buscar-item"><i class='bx bx-search'></i>Buscar</button>
       </form>
     </section>   
@@ -87,12 +87,12 @@ export class EditStatus extends HTMLElement {
     <section class="input-item">
     <form action="#" class="actulizar-item">
       <label for="estado">
-        Nombre estado:
+        Nombre:
       </label>
         <input type="text" id="estado"  name="status" required>
         <input type="text" id="ide"  name="ide"  hidden>
         <br>  
-      <button type="submit" class="btn-actualizar">Actulizar</button>
+      <button type="submit" class="btn-actualizar">Actualizar</button>
     </form>
   </section> 
   <h2 class="titulo"></h2>
@@ -166,7 +166,7 @@ export class EditStatus extends HTMLElement {
     const datosDiv = this.querySelector(".main-estado");
     const titulo = document.querySelector(".titulo");
     datosDiv.innerHTML = "";
-    titulo.innerHTML = `${this.endpoint} registrados`;
+    titulo.innerHTML = `Registros`;
     const datos = await getData(this.endpoint);
     if (datos.length != 0) {
       datos.forEach((dato) => {
@@ -202,7 +202,7 @@ export class DeleteData extends HTMLElement {
     </section>
     <section class="header-estado">
     <form action="#" class="formulario-header">
-    <input type="text" name="name" class="busqueda" placeholder="Buscar por el id  o nombre" required>
+    <input type="text" name="name" class="busqueda" placeholder="Buscar por id  o nombre" required>
     <button type="submit" class="buscar-item"><i class='bx bx-search'></i>Buscar</button>
     </form>
   </section>   

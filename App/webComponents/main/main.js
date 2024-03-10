@@ -19,7 +19,7 @@ export class MainComponent extends HTMLElement {
       </li> -->
       <li>
         <a href="#"
-          ><i class="bx bxs-inbox icon"></i> Activos
+          ><i class='bx bx-list-ul icon'></i> Activos
           <i class="bx bx-chevron-right icon-right"></i
         ></a>
         <ul class="side-dropdown">
@@ -31,7 +31,7 @@ export class MainComponent extends HTMLElement {
       </li>
       <li>
       <a href="#"
-        ><i class="bx bxs-inbox icon"></i> Proveedor
+        ><i class='bx bxs-cart icon'></i> Proveedor
         <i class="bx bx-chevron-right icon-right"></i
       ></a>
       <ul class="side-dropdown">
@@ -43,7 +43,7 @@ export class MainComponent extends HTMLElement {
     </li>
       <li>
       <a href="#"
-        ><i class="bx bxs-inbox icon"></i> Estados
+        ><i class='bx bx-stats icon'></i> Estados
         <i class="bx bx-chevron-right icon-right"></i
       ></a>
       <ul class="side-dropdown">
@@ -55,7 +55,7 @@ export class MainComponent extends HTMLElement {
     </li>
     <li>
       <a href="#"
-        ><i class="bx bxs-inbox icon"></i> Marcas
+        ><i class='bx bxs-label icon'></i> Marcas
         <i class="bx bx-chevron-right icon-right"></i
       ></a>
       <ul class="side-dropdown">
@@ -67,7 +67,7 @@ export class MainComponent extends HTMLElement {
     </li>
     <li>
       <a href="#"
-        ><i class="bx bxs-inbox icon"></i> Área
+        ><i class='bx bxs-area icon'></i> Área
         <i class="bx bx-chevron-right icon-right"></i
       ></a>
       <ul class="side-dropdown">
@@ -79,7 +79,7 @@ export class MainComponent extends HTMLElement {
     </li>
     <li>
       <a href="#"
-        ><i class="bx bxs-inbox icon"></i> Categoria Activos
+        ><i class='bx bxs-category icon'></i> Categoria Activos
         <i class="bx bx-chevron-right icon-right"></i
       ></a>
       <ul class="side-dropdown">
@@ -91,7 +91,7 @@ export class MainComponent extends HTMLElement {
     </li>
     <li>
       <a href="#"
-        ><i class="bx bxs-inbox icon"></i> Tipo Persona
+        ><i class='bx bx-male-female icon'></i> Tipo Persona
         <i class="bx bx-chevron-right icon-right"></i
       ></a>
       <ul class="side-dropdown">
@@ -103,7 +103,7 @@ export class MainComponent extends HTMLElement {
     </li>
     <li>
       <a href="#"
-        ><i class="bx bxs-inbox icon"></i> Tipo Movimiento Activo
+        ><i class='bx bx-move icon'></i> Tipo Movimiento Activo
         <i class="bx bx-chevron-right icon-right"></i
       ></a>
       <ul class="side-dropdown">
@@ -115,7 +115,7 @@ export class MainComponent extends HTMLElement {
     </li>
     <li>
         <a href="#"
-          ><i class="bx bxs-inbox icon"></i> Tipo activo
+          ><i class='bx bx-devices icon' ></i> Tipo activo
           <i class="bx bx-chevron-right icon-right"></i
         ></a>
         <ul class="side-dropdown">
@@ -127,7 +127,7 @@ export class MainComponent extends HTMLElement {
       </li>
       <li>
         <a href="#"
-          ><i class="bx bxs-inbox icon"></i> Personas
+          ><i class='bx bxs-face icon'></i> Personas
           <i class="bx bx-chevron-right icon-right"></i
         ></a>
         <ul class="side-dropdown">
