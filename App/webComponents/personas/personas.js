@@ -220,7 +220,7 @@ export class DeleteProveedor extends HTMLElement {
     btnBuscar.addEventListener("click", async (e) => {
       const busqueda = document.querySelector(".busqueda").value;
       console.log(busqueda);
-      const proveedores = await getData("suppliers");
+      const proveedores = await getData("people");
       let result = proveedores.filter(
         (item) =>
           item.name.toLowerCase().startsWith(busqueda.toLowerCase()) ||
@@ -234,8 +234,9 @@ export class DeleteProveedor extends HTMLElement {
       if (result.length === 1) {
         areaPrincipal.innerHTML = `
             <div class="card">
+            <p class="item-estado"><small>id: </small>${result[0].id}</p>
             <p class="titulo-estado">${result[0].name}</p>
-            <p><small class="item-estado">${result[0].email}</small></p>
+            <p>${result[0].email}</p>
             <div class="opciones-estado">
               <button class="eliminarp" id="${result[0].id}"><i class="bx bx-trash"></i>Eliminar</button>
             </div>
@@ -248,7 +249,7 @@ export class DeleteProveedor extends HTMLElement {
             );
             if (pregunta) {
               const id = e.target.id;
-              deleteData(id, "suppliers");
+              deleteData(id, "people");
               e.target.id = "";
               areaPrincipal.innerHTML = "";
               p.classList.add("notificacionF");
