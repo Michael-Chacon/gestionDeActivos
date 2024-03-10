@@ -31,6 +31,18 @@ export class MainComponent extends HTMLElement {
       </li>
       <li>
       <a href="#"
+        ><i class='bx bxs-face icon'></i> Personas
+        <i class="bx bx-chevron-right icon-right"></i
+      ></a>
+      <ul class="side-dropdown">
+        <li><a href="#" class="persona agregar">Agregar</a></li>
+        <li><a href="#" class="persona editar">Editar</a></li>
+        <li><a href="#" class="persona eliminar">Eliminar</a></li>
+        <li><a href="#" class="persona buscar">Buscar</a></li>
+      </ul>
+    </li>
+      <li>
+      <a href="#"
         ><i class='bx bxs-cart icon'></i> Proveedor
         <i class="bx bx-chevron-right icon-right"></i
       ></a>
@@ -127,18 +139,6 @@ export class MainComponent extends HTMLElement {
       </li>
       <li>
         <a href="#"
-          ><i class='bx bxs-face icon'></i> Personas
-          <i class="bx bx-chevron-right icon-right"></i
-        ></a>
-        <ul class="side-dropdown">
-          <li><a href="#" class="persona agregar">Agregar</a></li>
-          <li><a href="#" class="persona editar">Editar</a></li>
-          <li><a href="#" class="persona eliminar">Eliminar</a></li>
-          <li><a href="#" class="persona buscar">Buscar</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#"
           ><i class="bx bxs-inbox icon"></i> Tipo activo
           <i class="bx bx-chevron-right icon-right"></i
         ></a>
@@ -194,6 +194,7 @@ export class MainComponent extends HTMLElement {
       } else if (e.target.classList[0] === "tipo-personaMAL") {
         console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
       } else if (e.target.classList[0] === "persona") {
+        main.innerHTML = `<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`;
         console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
       } else if (e.target.classList[0] === "proveedor") {
         console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);

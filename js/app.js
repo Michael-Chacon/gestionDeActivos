@@ -16,6 +16,7 @@ import { getData } from "../../../Api/ApiActivos.js";
 export function guardarDatos(formulario, endpoint) {
   const getDataForm = new FormData(formulario);
   const data = Object.fromEntries(getDataForm);
+  console.log(data);
   postData(data, endpoint);
 }
 
