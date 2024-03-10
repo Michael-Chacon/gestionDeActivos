@@ -20,14 +20,28 @@ export function guardarDatos(formulario, endpoint) {
   postData(data, endpoint);
 }
 
-export async function llenarSelect(endpoint, padre) {
+export async function llenarSelect(endpoint, padre, id = null) {
   const datos = await getData(endpoint);
-  datos.forEach((item) => {
-    const opcion = document.createElement("option");
-    opcion.value = item.id;
-    opcion.textContent = item.name;
-    padre.appendChild(opcion);
-  });
+  if (id == null) {
+    console.log("NO hay id");
+    datos.forEach((item) => {
+      const opcion = document.createElement("option");
+      opcion.value = item.id;
+      opcion.textContent = item.name;
+      padre.appendChild(opcion);
+    });
+  } else {
+    console.log(id);
+    datos.forEach((item) => {
+      const opcion = document.createElement("option");
+      if (item.id === id) {
+        opcion.selected = true;
+      }
+      opcion.value = item.id;
+      opcion.textContent = item.name;
+      padre.appendChild(opcion);
+    });
+  }
 }
 
 export function actualizarDatos(formulario, endpoint, id) {
