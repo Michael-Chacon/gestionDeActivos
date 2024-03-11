@@ -181,8 +181,8 @@ export class EditStatus extends HTMLElement {
     const datosDiv = this.querySelector(".main-estado");
     const titulo = document.querySelector(".titulo");
     datosDiv.innerHTML = "";
-    titulo.innerHTML = `Registros`;
-    const datos = await getData(this.endpoint);
+    // titulo.innerHTML = `Registros`;
+    // const datos = await getData(this.endpoint);
     if (datos.length != 0) {
       datos.forEach((dato) => {
         datosDiv.innerHTML += `

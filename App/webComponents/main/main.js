@@ -180,6 +180,8 @@ export class MainComponent extends HTMLElement {
 
     <!-- MAIN -->
     <main class="main">
+      <h2 class="paginaInicial">Bienvenido al gestor de activos de CampusLands</h2>
+      <p class="contenidoPaginaInicial">A continuación selecciona una de las opciones de nuestro menú</p>
     </main>
     <!-- MAIN -->
   </section>

@@ -170,3 +170,18 @@
     cursor: pointer;
     color: white;
  }
+
+ @media (max-width: 768px) {
+    #formulario{
+        padding: 20px;
+        width: 90%;
+    }
+
+    .header-estado{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+    }
+ }

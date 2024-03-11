@@ -65,7 +65,7 @@ form .tarea{
     padding: 15px;
     border-radius: 5px;
     border: 1px solid #CCD3CA;
-    width: 50%;
+    width: 90%;
 }
   
 #estado {
@@ -341,4 +341,24 @@ form .botones .cancelar:hover{
     background-color: rgb(10 207 151);
     cursor: pointer;
     color: white;
+ }
+
+ @media (max-width: 768px) {
+    .formulario-header{
+        width: 90%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .input-item .actulizar-item{
+        width: 90%;
+    }
+
+    .header-busqueda {
+        width: 90%;
+    }
  }
