@@ -75,32 +75,31 @@ export class EditStatus extends HTMLElement {
     super();
     this.endpoint = this.getAttribute("endPoint");
     this.render();
-    this.showStatus();
     this.buscador();
   }
 
   render() {
-    this.innerHTML = `
+    this.innerHTML = /* html */`
     
     <link rel="stylesheet" href="App/webComponents/estados/estado.css">
     <section id="notificacion">
     </section>
     <section class="header-estado">
       <form action="#" class="formulario-header">
-      <input type="text" name="name" class="busqueda" placeholder="Buscar por id  o nombre" required>
-      <button type="submit" class="buscar-item"><i class='bx bx-search'></i>Buscar</button>
-      </form>
-    </section>   
-    <section class="error"></section>
-    <section class="input-item">
-    <form action="#" class="actulizar-item">
-      <label for="estado">
-        Nombre:
-      </label>
-        <input type="text" id="estado"  name="status" required>
-        <input type="text" id="ide"  name="ide"  hidden>
-        <br>  
-      <button type="submit" class="btn-actualizar">Actualizar</button>
+        <input type="text" name="name" class="busqueda" placeholder="Buscar por id  o nombre" required>
+        <button type="submit" class="buscar-item"><i class='bx bx-search'></i>Buscar</button>
+        </form>
+      </section>   
+      <section class="error"></section>
+      <section class="input-item">
+      <form action="#" class="actulizar-item">
+        <label for="estado">
+          Nombre:
+        </label>
+          <input type="text" id="estado"  name="status" required>
+          <input type="text" id="ide"  name="ide"  hidden>
+          <br>  
+        <button type="submit" class="btn-actualizar">Actualizar</button>
     </form>
   </section> 
   <h2 class="titulo"></h2>
@@ -174,34 +173,7 @@ export class EditStatus extends HTMLElement {
       setTimeout(() => {
         seccionNotificacion.removeChild(notificacion);
       }, 3000);
-      setTimeout(async () => {
-        await this.showStatus();
-      }, 100);
     });
-  }
-
-  async showStatus() {
-    const datosDiv = this.querySelector(".main-estado");
-    const titulo = document.querySelector(".titulo");
-    datosDiv.innerHTML = "";
-    // titulo.innerHTML = `Registros`;
-    // const datos = await getData(this.endpoint);
-    if (datos.length != 0) {
-      datos.forEach((dato) => {
-        datosDiv.innerHTML += `
-      <div class="card-estado">
-      <p class="titulo-estado">${dato.name}</p>
-      <p><small class="item-estado">Id: </small>${dato.id}</p>
-    </div>
-      `;
-      });
-    } else {
-      datosDiv.innerHTML += `
-    <div class="card-estado">
-    <p class="titulo-estado">No hay estados registrados</p>
-  </div>
-    `;
-    }
   }
 }
 
