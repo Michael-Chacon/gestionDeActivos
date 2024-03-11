@@ -130,13 +130,16 @@ export class EditStatus extends HTMLElement {
         );
         const vacio = document.querySelector(".error");
 
+        const mostrarNombre = document.querySelector(".actulizar-item")
         input.value = "";
         if (result.length === 1) {
           input.value = result[0].name;
           ide.value = result[0].id;
+          mostrarNombre.style.display = 'block'
           vacio.innerHTML = "";
         } else {
           vacio.innerHTML = "No se encontraron resultados para su busqueda";
+          mostrarNombre.style.display = 'none'
           setTimeout(() => {
             vacio.innerHTML = "";
           }, 4000);

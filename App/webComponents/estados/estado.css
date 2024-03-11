@@ -223,6 +223,7 @@ form .botones .cancelar:hover{
 
 .input-item .actulizar-item{
     width: 45%;
+    display: none;
 }
 
 .input-item .actulizar-item input{

@@ -9,6 +9,21 @@
 #formulario{
     padding: 20px;
     width: 40%;
+    /* display: none; */
+}
+
+.active {
+    display: block;
+}
+
+.inactive {
+    display: none;
+}
+
+.formularioPersonas {
+    padding: 20px;
+    width: 40%;
+    display: block;
 }
 
 .inputs{

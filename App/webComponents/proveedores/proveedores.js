@@ -78,9 +78,9 @@ export class EditProveedor extends HTMLElement {
             </form>
         </section>
 
-        <form action="#" id="formulario">
+        <form action="#" id="formulario" class="inactive">
             <div class="inputs">
-            <laber>Nombre: </laber>
+            <label>Nombre: </label>
             <input
                 type="text"
                 name="name"
@@ -101,9 +101,10 @@ export class EditProveedor extends HTMLElement {
             </div>
             <input type="text" id="ide"  name="id" hidden />
             <button type="submit" class="btn-registrarF">Actualizar</button>
-            <div class="padreNotificacion">
-            </div>
+            
         </form>
+        <div class="padreNotificacion">
+            </div>
         </section>
           `;
   }
@@ -127,11 +128,15 @@ export class EditProveedor extends HTMLElement {
         const name = document.querySelector(".name");
         const email = document.querySelector(".email");
         const idHidden = document.querySelector("#ide");
+        
         name.value = result[0].name;
         email.value = result[0].email;
         idHidden.value = result[0].id;
         // Actulizar datos
         const formulario = document.querySelector("#formulario");
+        formulario.style.display = 'block'
+        // formulario.style.display = 'block'
+        formulario.classList.add("active")
         formulario.addEventListener("submit", (e) => {
           e.preventDefault();
           e.stopImmediatePropagation();
@@ -146,6 +151,7 @@ export class EditProveedor extends HTMLElement {
           formulario.reset();
           p.classList.add("notificacionF");
           p.innerHTML = "Actualización exitosa";
+          formulario.style.display = 'none'
           notificacion.appendChild(p);
           setTimeout(() => {
             notificacion.removeChild(p);
@@ -158,6 +164,7 @@ export class EditProveedor extends HTMLElement {
         setTimeout(() => {
           notificacion.removeChild(p);
         }, 3000);
+        formulario.style.display = 'none'
       }
       console.log(result);
     });

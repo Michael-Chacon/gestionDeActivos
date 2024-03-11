@@ -96,7 +96,7 @@ export class EditPeople extends HTMLElement {
             </form>
         </section>
 
-        <form action="#" id="formulario">
+        <form action="#" id="formulario" class="inactive">
             <div class="inputs">
                 <label>Id:<small> Solo lectura</small> </label>
                 <input type="text" name="id" id="id" class="form-input" required readonly/>
@@ -119,9 +119,10 @@ export class EditPeople extends HTMLElement {
             <input type="text" name="enabled" id="enabled" class="form-input" required readonly/>
           </div>
             <button type="submit" class="btn-registrarF">Registrar</button>
-            <div class="padreNotificacion">
-            </div>
+            
         </form>
+        <div class="padreNotificacion">
+        </div>
         </section>
           `;
   }
@@ -140,6 +141,7 @@ export class EditPeople extends HTMLElement {
 
       const notificacion = document.querySelector(".padreNotificacion");
       const p = document.createElement("P");
+      
 
       if (result.length === 1) {
         const name = document.querySelector("#name");
@@ -154,6 +156,8 @@ export class EditPeople extends HTMLElement {
         this.llenarCompo(result[0].typoPersonId);
         // Actulizar datos
         const formulario = document.querySelector("#formulario");
+        formulario.style.display = 'block'
+
         formulario.addEventListener("submit", (e) => {
           e.preventDefault();
           e.stopImmediatePropagation();
@@ -166,6 +170,7 @@ export class EditPeople extends HTMLElement {
           this.limpiarSelects(tipoPersona);
           p.classList.add("notificacionF");
           p.innerHTML = "Actualización exitosa";
+          formulario.style.display = 'none'
           notificacion.appendChild(p);
           setTimeout(() => {
             notificacion.removeChild(p);
@@ -174,10 +179,12 @@ export class EditPeople extends HTMLElement {
       } else {
         p.classList.add("notificacionFail");
         p.innerHTML = "Lo que buscas no existe";
+        
         notificacion.appendChild(p);
         setTimeout(() => {
           notificacion.removeChild(p);
         }, 3000);
+        formulario.style.display = 'none'
       }
       console.log(result);
     });
