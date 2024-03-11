@@ -202,38 +202,31 @@ export class MainComponent extends HTMLElement {
       const main = document.querySelector(".main");
       if (e.target.classList[0] === "estado") {
         main.innerHTML = `<${subOpcion}-generico endPoint="status"></${subOpcion}-${opciones}>`;
-      } else if (e.target.classList[0] === "tipo-personaMAL") {
-        console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
       } else if (e.target.classList[0] === "persona") {
         main.innerHTML = `<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`;
-        console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
       } else if (e.target.classList[0] === "proveedor") {
-        console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
         main.innerHTML = `<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`;
       } else if (e.target.classList[0] === "marca") {
         main.innerHTML = `<${subOpcion}-generico endPoint="brands"></${subOpcion}-${opciones}>`;
-        console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
       } else if (e.target.classList[0] === "ubicacion") {
         main.innerHTML = `<${subOpcion}-generico endPoint="locations"></${subOpcion}-${opciones}>`;
-        console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
       } else if (e.target.classList[0] === "tipo-persona") {
         main.innerHTML = `<${subOpcion}-generico endPoint="typePeople"></${subOpcion}-${opciones}>`;
-        console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
       } else if (e.target.classList[0] === "tipo-movimiento-activo") {
         main.innerHTML = `<${subOpcion}-generico endPoint="typeMovAssets"></${subOpcion}-${opciones}>`;
         console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
       } else if (e.target.classList[0] === "tipo-activo") {
         main.innerHTML = `<${subOpcion}-generico endPoint="tipyAssets"></${subOpcion}-${opciones}>`;
-        console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
       } else if (e.target.classList[0] === "categoria-activo") {
         main.innerHTML = `<${subOpcion}-generico endPoint="categoryAssets"></${subOpcion}-${opciones}>`;
-        console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
       } else if (e.target.classList[0] === "activos") {
         main.innerHTML = `<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`;
-        console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
-      }
+      } else if(e.target.classList[0] === "asignacion"){
+        main.innerHTML = `<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`;
+      } 
     });
   }
+  // <li><a href="#" class="asignacion crear">Crear Asignación</a></li>
 }
 
 customElements.define("main-component", MainComponent);
