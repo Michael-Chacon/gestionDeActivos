@@ -1,8 +1,12 @@
-import { getData, updateData, deleteData } from "../../../Api/ApiActivos.js";
+import {
+  getData,
+  updateData,
+  deleteData,
+  getOneData,
+} from "../../../Api/ApiActivos.js";
 import { guardarDatos, llenarSelect } from "../../../js/app.js";
 
-export class AddProveedor extends HTMLElement {
-  
+export class AddPeople extends HTMLElement {
   constructor() {
     super();
     this.render();
@@ -65,7 +69,7 @@ export class AddProveedor extends HTMLElement {
   }
 }
 
-export class EditProveedor extends HTMLElement {
+export class EditPeople extends HTMLElement {
   constructor() {
     super();
     this.render();
@@ -184,7 +188,7 @@ export class EditProveedor extends HTMLElement {
   }
 }
 
-export class DeleteProveedor extends HTMLElement {
+export class DeletePeople extends HTMLElement {
   constructor() {
     super();
     this.render();
@@ -275,6 +279,120 @@ export class DeleteProveedor extends HTMLElement {
   }
 }
 
-customElements.define("agregar-persona", AddProveedor);
-customElements.define("editar-persona", EditProveedor);
-customElements.define("eliminar-persona", DeleteProveedor);
+export class SearchPeople extends HTMLElement {
+  constructor() {
+    super();
+    this.render();
+    this.mostrar();
+    this.buscar();
+  }
+  render() {
+    this.innerHTML = `
+    <link rel="stylesheet" href="App/webComponents/activos/activos.css">
+    <section class="formulario">
+      <section class="header-estado">
+        <form action="#" class="formulario-header">
+          <input
+            type="text"
+            name="name"
+            class="busqueda"
+            id="busqueda"
+            placeholder="Buscar por el id  o nombre"
+            required
+          />
+          <button type="button" class="buscar-item">
+            <i class="bx bx-search"></i>Buscar
+          </button>
+        </form>
+      </section>
+      <div class="padreNotificacion">
+      </div>
+      <section class="main-content">
+        <table>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Tipo persona</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tabla">
+          </tbody>
+        </table>
+      </section>
+    </section>
+    `;
+  }
+
+  async buscar() {
+    const btnBuscar = document.querySelector(".buscar-item");
+    btnBuscar.addEventListener("click", async (e) => {
+      const busqueda = document.querySelector("#busqueda").value;
+      const proveedores = await getData("people");
+      let result = proveedores.filter(
+        (item) => item.name.startsWith(busqueda) || item.id.startsWith(busqueda)
+      );
+      var notificacion = document.querySelector(".padreNotificacion");
+      const p = document.createElement("P");
+
+      const tabla = document.querySelector("#tabla");
+      if (result.length === 1) {
+        tabla.innerHTML = "";
+        console.log("here");
+        const tipoPersona = await getOneData(
+          result[0].typoPersonId,
+          "typePeople"
+        );
+        tabla.innerHTML += ` 
+        <tr>
+          <td>${result[0].id}</td>
+          <td>${result[0].name}</td>
+          <td class="estado-activo">${result[0].email}</td>
+          <td>${tipoPersona.name}</td>
+          <td><button class="ver-detalle" id="${result[0].id}">Ver perfil</button></td>
+        </tr>`;
+
+        // Eliminar
+        tabla.addEventListener("click", (e) => {
+          if (e.target.classList.contains("ver-detalle")) {
+            const idActivo = e.target.id;
+            console.log(idActivo + "funciona el click");
+          }
+        });
+      } else {
+        tabla.innerHTML = "";
+        p.classList.add("notificacionFail");
+        p.innerHTML = "Lo que buscas no existe";
+        notificacion.appendChild(p);
+        tabla.innerHTML = "";
+        this.mostrar();
+        setTimeout(() => {
+          notificacion.removeChild(p);
+        }, 3000);
+      }
+    });
+  }
+
+  async mostrar() {
+    const tabla = document.querySelector("#tabla");
+    const proveedores = await getData("people");
+    proveedores.forEach(async (result) => {
+      const tipoPersona = await getOneData(result.typoPersonId, "typePeople");
+      tabla.innerHTML += ` 
+        <tr>
+          <td>${result.id}</td>
+          <td>${result.name}</td>
+          <td class="estado-activo">${result.email}</td>
+          <td>${tipoPersona.name}</td>
+          <td><button class="ver-detalle" id="${result.id}">Ver perfil</button></td>
+        </tr>`;
+    });
+  }
+}
+
+customElements.define("agregar-persona", AddPeople);
+customElements.define("editar-persona", EditPeople);
+customElements.define("eliminar-persona", DeletePeople);
+customElements.define("buscar-persona", SearchPeople);

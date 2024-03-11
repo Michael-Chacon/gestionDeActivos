@@ -538,6 +538,7 @@ export class SearchActivo extends HTMLElement {
     </section>
   </section>`;
   }
+  
   async buscar() {
     const btnBuscar = document.querySelector(".buscar-item");
     btnBuscar.addEventListener("click", async (e) => {
