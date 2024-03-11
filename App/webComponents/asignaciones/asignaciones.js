@@ -76,7 +76,7 @@ export class CreateAsignacion extends HTMLElement {
           updateData(datos, "people", idPersona);
 
           // Crear asignación
-          
+
           // Obtener la fecha actual
           var fechaActual = new Date();
           var dia = fechaActual.getDate();
@@ -111,9 +111,99 @@ export class AssignAsset extends HTMLElement {
   constructor() {
     super();
     this.render();
+    this.buscar();
   }
   render() {
-    this.innerHTML = "Hola desde asignar asignacion";
+    this.innerHTML = `
+    <link rel="stylesheet" href="App/webComponents/activos/activos.css">
+    <section class="formulario">
+      <section class="header-estado">
+        <form action="#" class="formulario-header">
+          <input
+            type="search"
+            name="name"
+            class="busqueda"
+            id="busqueda"
+            placeholder="Buscar por el id  o nombre"
+            required
+          />
+          <button type="button" class="buscar-item">
+            <i class="bx bx-search"></i>Buscar
+          </button>
+        </form>
+      </section>
+      <div class="padreNotificacion">
+      </div>
+      <section class="main-content">
+        <table>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Tipo persona</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tabla">
+          </tbody>
+        </table>
+      </section>
+    </section>
+    `;
+  }
+  async buscar() {
+    const btnBuscar = document.querySelector(".buscar-item");
+    btnBuscar.addEventListener("click", async (e) => {
+      const busqueda = document.querySelector("#busqueda").value;
+      const proveedores = await getData("people");
+      let result = proveedores.filter(
+        (item) =>
+          (item.name.toLowerCase().startsWith(busqueda.toLowerCase()) ||
+            item.id.startsWith(busqueda)) &&
+          item.enabled === "si"
+      );
+      console.log(result);
+      var notificacion = document.querySelector(".padreNotificacion");
+      const p = document.createElement("P");
+
+      const tabla = document.querySelector("#tabla");
+      if (result.length === 1) {
+        tabla.innerHTML = "";
+        console.log("here");
+        const tipoPersona = await getOneData(
+          result[0].typoPersonId,
+          "typePeople"
+        );
+        tabla.innerHTML += ` 
+        <tr>
+          <td>${result[0].id}</td>
+          <td>${result[0].name}</td>
+          <td class="estado-activo">${result[0].email}</td>
+          <td>${tipoPersona.name}</td>
+          <td><button class="ver-detalle" id="${result[0].id}">Hacer asignación</button></td>
+        </tr>`;
+
+        // Eliminar
+        tabla.addEventListener("click", (e) => {
+          if (e.target.classList.contains("ver-detalle")) {
+            const idPersona = e.target.id;
+            const MAIN = document.querySelector(".main");
+            MAIN.innerHTML = `<asigar-un-activo idPersona='${idPersona}'></asigar-un-activo>`;
+          }
+        });
+      } else {
+        tabla.innerHTML = "";
+        p.classList.add("notificacionFail");
+        p.innerHTML =
+          "La persona a la que busca no existe o no está habilitada para recibir activos ";
+        notificacion.appendChild(p);
+        tabla.innerHTML = "";
+        setTimeout(() => {
+          notificacion.removeChild(p);
+        }, 4000);
+      }
+    });
   }
 }
 

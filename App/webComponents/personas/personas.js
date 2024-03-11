@@ -339,7 +339,9 @@ export class SearchPeople extends HTMLElement {
       const busqueda = document.querySelector("#busqueda").value;
       const proveedores = await getData("people");
       let result = proveedores.filter(
-        (item) => item.name.startsWith(busqueda) || item.id.startsWith(busqueda)
+        (item) =>
+          item.name.toLowerCase().startsWith(busqueda.toLowerCase()) ||
+          item.id.startsWith(busqueda)
       );
       var notificacion = document.querySelector(".padreNotificacion");
       const p = document.createElement("P");

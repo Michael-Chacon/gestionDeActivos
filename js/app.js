@@ -4,6 +4,7 @@ import "/App/webComponents/personas/personas.js";
 import "/App/webComponents/proveedores/proveedores.js";
 import "/App/webComponents/estados/estado.js";
 import "/App/webComponents/asignaciones/asignaciones.js";
+import "/App/webComponents/asignaciones/asignarActivo.js";
 import { postData, updateData, getData } from "../../../Api/ApiActivos.js";
 
 export function guardarDatos(formulario, endpoint) {
