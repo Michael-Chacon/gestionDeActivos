@@ -31,6 +31,17 @@ export class MainComponent extends HTMLElement {
       </li>
       <li>
       <a href="#"
+        ><i class='bx bx-list-ul icon'></i> Asignación
+        <i class="bx bx-chevron-right icon-right"></i
+      ></a>
+      <ul class="side-dropdown">
+        <li><a href="#" class="asignacion crear">Crear Asignación</a></li>
+        <li><a href="#" class="asignacion asignar">Asignar activos</a></li>
+        <li><a href="#" class="asignacion retornar">Retornar Activo</a></li>
+      </ul>
+    </li>
+      <li>
+      <a href="#"
         ><i class='bx bxs-face icon'></i> Personas
         <i class="bx bx-chevron-right icon-right"></i
       ></a>
