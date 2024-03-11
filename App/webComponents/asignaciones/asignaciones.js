@@ -1,32 +1,22 @@
-import { getData, getOneData } from "../../../Api/ApiActivos.js";
+import {
+  getData,
+  getOneData,
+  updateData,
+  postData,
+} from "../../../Api/ApiActivos.js";
 
 export class CreateAsignacion extends HTMLElement {
   constructor() {
     super();
     this.render();
-    this.buscar();
     this.mostrar();
+    this.detectarClick();
   }
   render() {
     this.innerHTML = /* html */ `
     <link rel="stylesheet" href="App/webComponents/activos/activos.css">
 
     <section class="formulario">
-    <section class="header-estado">
-      <form action="#" class="formulario-header">
-        <input
-          type="search"
-          name="name"
-          class="busqueda"
-          id="busqueda"
-          placeholder="Buscar por el id  o nombre"
-          required
-        />
-        <button type="button" class="buscar-item">
-          <i class="bx bx-search"></i>Buscar
-        </button>
-      </form>
-    </section>
     <div class="padreNotificacion">
     </div>
     <br>
@@ -37,23 +27,11 @@ export class CreateAsignacion extends HTMLElement {
           <tr>
             <th>Id</th>
             <th>Nombre</th>
-            <!-- <th>Email</th> -->
             <th>Tipo persona</th>
-            <th></th>
+            <th>Habilitar</th>
           </tr>
         </thead>
         <tbody id="tabla">
-          <tr>
-            <td>3rd2</td>
-            <td>Duván Camilo Arenas Arenas</td>
-            <!-- <td>DuvanArenas@gmail.com</td> -->
-            <td>Natural</td>
-            <td>
-              <button class="eliminar-activo" id="id">
-                Habilitar asignaciones
-              </button>
-            </td>
-          </tr>
         </tbody>
       </table>
     </section>
@@ -61,62 +39,12 @@ export class CreateAsignacion extends HTMLElement {
     
     `;
   }
-  async buscar() {
-    const btnBuscar = document.querySelector(".buscar-item");
-    btnBuscar.addEventListener("click", async (e) => {
-      const busqueda = document.querySelector("#busqueda").value;
-      const proveedores = await getData("people");
-      let result = proveedores.filter(
-        (item) =>
-          item.name.toLowerCase().startsWith(busqueda.toLowerCase()) ||
-          (item.id.startsWith(busqueda.toLowerCase()) && item.enabled === "no")
-      );
-      var notificacion = document.querySelector(".padreNotificacion");
-      const p = document.createElement("P");
-
-      const tabla = document.querySelector("#tabla");
-      if (result.length === 1) {
-        tabla.innerHTML = "";
-        console.log("here");
-        const tipoPersona = await getOneData(
-          result[0].typoPersonId,
-          "typePeople"
-        );
-        tabla.innerHTML += ` 
-        <tr>
-          <td>${result[0].id}</td>
-          <td>${result[0].name}</td>
-          <td>${tipoPersona.name}</td>
-          <td> <button class="eliminar-activo" id="id">
-          Habilitar asignaciones
-        </button></td>
-        </tr>`;
-
-        // Eliminar
-        tabla.addEventListener("click", (e) => {
-          if (e.target.classList.contains("ver-detalle")) {
-            const idActivo = e.target.id;
-            console.log(idActivo + "funciona el click");
-          }
-        });
-      } else {
-        tabla.innerHTML = "";
-        p.classList.add("notificacionFail");
-        p.innerHTML = "Lo que buscas no existe";
-        notificacion.appendChild(p);
-        tabla.innerHTML = "";
-        this.mostrar();
-        setTimeout(() => {
-          notificacion.removeChild(p);
-        }, 3000);
-      }
-    });
-  }
 
   async mostrar() {
     const tabla = document.querySelector("#tabla");
-    const proveedores = await getData("people");
-    const sinPermisos = proveedores.filter((item) => item.enabled === "no");
+    tabla.innerHTML = "";
+    const persona = await getData("people");
+    const sinPermisos = persona.filter((item) => item.enabled === "no");
     sinPermisos.forEach(async (result) => {
       const tipoPersona = await getOneData(result.typoPersonId, "typePeople");
       tabla.innerHTML += ` 
@@ -124,10 +52,57 @@ export class CreateAsignacion extends HTMLElement {
           <td>${result.id}</td>
           <td>${result.name}</td>
           <td>${tipoPersona.name}</td>
-          <td> <button class="eliminar-activo" id="id">
+          <td> <button class="hacer-asignacion" id="${result.id}">
           Habilitar asignaciones
         </button></td>
         </tr>`;
+    });
+  }
+
+  detectarClick() {
+    const areaEvento = document.querySelector(".main-content");
+    areaEvento.addEventListener("click", async (e) => {
+      if (e.target.classList.contains("hacer-asignacion")) {
+        let pregunta = confirm(
+          "¿Está seguro que quiere habilitar a esta persona para recibir activos de CampusLands?"
+        );
+        if (pregunta) {
+          const idPersona = e.target.id;
+          //Obtener la persona y cambiar enabled a SI
+          const datos = await getOneData(idPersona, "people");
+          datos.enabled = "si";
+          const padreNotificacion =
+            document.querySelector(".padreNotificacion");
+          updateData(datos, "people", idPersona);
+
+          // Crear asignación
+          
+          // Obtener la fecha actual
+          var fechaActual = new Date();
+          var dia = fechaActual.getDate();
+          var mes = fechaActual.getMonth() + 1;
+          var año = fechaActual.getFullYear();
+          var fechaFormateada = dia + "/" + mes + "/" + año;
+
+          let obt = {
+            date: fechaFormateada,
+            responsibleId: idPersona,
+          };
+          postData(obt, "assignments");
+          const p = document.createElement("P");
+          p.classList.add("notificacionF");
+          p.textContent = "Habilitación realizada con éxito";
+          padreNotificacion.appendChild(p);
+          setTimeout(() => {
+            padreNotificacion.removeChild(p);
+          }, 3000);
+          setTimeout(() => {
+            this.mostrar();
+          }, 10);
+        } else {
+          console.log("Denegado");
+        }
+      }
     });
   }
 }

@@ -191,6 +191,7 @@ export class MainComponent extends HTMLElement {
 
     <!-- MAIN -->
     <main class="main">
+      
     </main>
     <!-- MAIN -->
   </section>
@@ -221,9 +222,9 @@ export class MainComponent extends HTMLElement {
         main.innerHTML = `<${subOpcion}-generico endPoint="categoryAssets"></${subOpcion}-${opciones}>`;
       } else if (e.target.classList[0] === "activos") {
         main.innerHTML = `<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`;
-      } else if(e.target.classList[0] === "asignacion"){
+      } else if (e.target.classList[0] === "asignacion") {
         main.innerHTML = `<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`;
-      } 
+      }
     });
   }
   // <li><a href="#" class="asignacion crear">Crear Asignación</a></li>
