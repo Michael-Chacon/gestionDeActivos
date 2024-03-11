@@ -79,14 +79,14 @@ export class MainComponent extends HTMLElement {
     </li>
     <li>
       <a href="#"
-        ><i class='bx bxs-area icon'></i> Área
+        ><i class='bx bxs-map icon'></i> Ubicación
         <i class="bx bx-chevron-right icon-right"></i
       ></a>
       <ul class="side-dropdown">
-        <li><a href="#" class="area agregar">Agregar</a></li>
-        <li><a href="#" class="area editar">Editar</a></li>
-        <li><a href="#" class="area eliminar">Eliminar</a></li>
-        <li><a href="#" class="area buscar">Buscar</a></li>
+        <li><a href="#" class="ubicacion agregar">Agregar</a></li>
+        <li><a href="#" class="ubicacion editar">Editar</a></li>
+        <li><a href="#" class="ubicacion eliminar">Eliminar</a></li>
+        <li><a href="#" class="ubicacion buscar">Buscar</a></li>
       </ul>
     </li>
     <li>
@@ -202,8 +202,8 @@ export class MainComponent extends HTMLElement {
       } else if (e.target.classList[0] === "marca") {
         main.innerHTML = `<${subOpcion}-generico endPoint="brands"></${subOpcion}-${opciones}>`;
         console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
-      } else if (e.target.classList[0] === "area") {
-        main.innerHTML = `<${subOpcion}-generico endPoint="areas"></${subOpcion}-${opciones}>`;
+      } else if (e.target.classList[0] === "ubicacion") {
+        main.innerHTML = `<${subOpcion}-generico endPoint="location"></${subOpcion}-${opciones}>`;
         console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
       } else if (e.target.classList[0] === "tipo-persona") {
         main.innerHTML = `<${subOpcion}-generico endPoint="typePeople"></${subOpcion}-${opciones}>`;

@@ -14,7 +14,7 @@ export class AddActivo extends HTMLElement {
     this.guardar();
   }
   render() {
-    this.innerHTML = `
+    this.innerHTML = /* html */`
     <link rel="stylesheet" href="App/webComponents/activos/activos.css">
     <section class="formulario">
     <form action="#" id="formulario">
@@ -96,6 +96,14 @@ export class AddActivo extends HTMLElement {
             <option value=""></option>
           </select>
         </div>
+        <div class="inputs">
+          <label for="statuId">Estado:</label>
+          <select name="statuId" id="statuId" required>
+            <option value=""></option>
+          </select>
+        </div>
+      </div>
+      <div class="bolth-grid">
         <div class="inputs">
           <label for="statuId">Estado:</label>
           <select name="statuId" id="statuId" required>
