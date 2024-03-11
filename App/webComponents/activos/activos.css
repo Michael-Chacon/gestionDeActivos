@@ -142,10 +142,15 @@
 }
 
 .main-content{
-    margin-top: 30px;
-    width: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
     overflow-x: scroll;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    margin-top: 30px;
 }
 
 table {
@@ -156,7 +161,7 @@ table {
 th, td {
     border: 1px solid rgb(182, 179, 179);
     box-sizing: border-box;
-    padding: 7px 20px;
+    padding: 10px 10px;
     text-align: left;
 }
 th{
@@ -182,6 +187,22 @@ td{
     background-color: white;
     color: red;
     outline: 1px solid red;
+}
+
+.ver-detalle{
+    border: none;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    background-color: #7952B3;
+    color: white;
+    border-radius: 5px;
+    transition: all ease-in 0.4s;
+}
+
+.ver-detalle:hover{
+    cursor: pointer;
+    background-color: rgb(10 207 151);
+    color: white;
 }
 
 .estado-activo{

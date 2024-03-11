@@ -1,64 +1,69 @@
 {
   "assets": [
     {
-      "id": "01",
-      "transactionCod": "0001",
-      "formNumber": "1000",
-      "brandId": "1",
-      "categoryAssetId": "1",
-      "tipyAssetId": "1",
-      "unitValue": "666",
-      "supplierId": "1",
       "serialNumber": "0000",
-      "companyId": "1",
-      "statuId": "2"
+      "formNumber": "9999",
+      "transactionCod": "0001",
+      "unitValue": "666",
+      "companyId": "CampusLandas",
+      "brandId": "b5fc",
+      "categoryAssetId": "1",
+      "tipyAssetId": "400f",
+      "supplierId": "f5a7",
+      "statuId": "e3e6",
+      "id": "01", 
+      "locationId": "01"
     }
   ],
   "suppliers": [
     {
-      "id": "1",
-      "name": "Duván",
-      "email": "jadklfjdlf"
+      "name": "Michael Chacón M.",
+      "email": "michael@gmail.io",
+      "id": "f382"
+    },
+    {
+      "name": "Alexis Chacón",
+      "email": "michael@gmail.com",
+      "id": "8e96"
+    },
+    {
+      "id": "f5a7",
+      "name": "Duván Camilo Arenas",
+      "email": "duvan@gmail.com"
+    },
+    {
+      "name": "Michael Chacón",
+      "email": "maria@gmail.com",
+      "id": "d899"
+    },
+    {
+      "name": "Miguel Chacón",
+      "email": "miguel@gmail.com",
+      "id": "08b7"
     }
   ],
   "brands": [
     {
-      "id": "1",
-      "name": "acer"
+      "id": "b5fc",
+      "name": "Hp"
+    },
+    {
+      "id": "9dc0",
+      "name": "76"
     }
   ],
   "status": [
     {
-      "id": "1",
-      "name": "No asignado"
+      "name": "Dado de baja por daño.",
+      "id": "3b31"
     },
     {
-      "id": "2",
-      "name": "Asignado"
+      "id": "d807",
+      "name": "En reparación y/o garantía"
     },
     {
-      "id": "3",
-      "name": "Dado de baja por daño"
-    },
-    {
-      "id": "4",
-      "name": "En reparación y/oGarantia"
-    },
-    {
-      "id": "258e",
-      "name": "1"
-    },
-    {
-      "id": "e094",
-      "name": "Michael Chacón"
-    },
-    {
-      "id": "9916",
-      "name": "Michael Chacón"
-    },
-    {
-      "id": "2d4d",
-      "name": "app.js"
+      "name": "Michael Chacón dfad",
+      "id": "e3e6"
     }
   ],
   "assignments": [
@@ -70,10 +75,28 @@
   ],
   "people": [
     {
-      "id": "",
-      "name": "",
-      "email": "",
-      "typoPersonId": ""
+      "name": "Michael Chacón",
+      "email": "michael@gmail.com",
+      "typoPersonId": "2",
+      "id": "0001"
+    },
+    {
+      "name": "Briand Jhoan Porras",
+      "email": "briand@correo.com",
+      "typoPersonId": "2",
+      "id": "123"
+    },
+    {
+      "id": "123",
+      "name": "Briand Jhoan Porras",
+      "email": "briand@correo.com",
+      "typoPersonId": "a2a2"
+    },
+    {
+      "name": "Nathaly Porras.",
+      "email": "nathaly@gmail.moc",
+      "typoPersonId": "a2a2",
+      "id": "987"
     }
   ],
   "categoryAssets": [
@@ -84,12 +107,16 @@
   ],
   "typePeople": [
     {
-      "id": "1",
-      "name": "jurídicas "
+      "name": "Jurídicas ",
+      "id": "1"
     },
     {
-      "id": "2",
-      "name": "natural"
+      "name": "Natural",
+      "id": "2"
+    },
+    {
+      "id": "a2a2",
+      "name": "7dd"
     }
   ],
   "typeMovAssets": [
@@ -117,8 +144,12 @@
   ],
   "tipyAssets": [
     {
-      "id": "1",
-      "name": "Electrodomestico"
+      "name": "Electrodomesticos",
+      "id": "1"
+    },
+    {
+      "id": "400f",
+      "name": "Pc"
     }
   ],
   "detailMovements": [
@@ -135,8 +166,15 @@
       "id": "1",
       "name": "Campuslands"
     }
-  ], 
-  "areas": [
-    
+  ],
+  "locations": [
+    {
+      "name": "Sin ubicación",
+      "id": "01"
+    },
+    {
+      "name": "CampusLands",
+      "id": "88d5"
+    }
   ]
 }

@@ -203,7 +203,7 @@ export class MainComponent extends HTMLElement {
         main.innerHTML = `<${subOpcion}-generico endPoint="brands"></${subOpcion}-${opciones}>`;
         console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
       } else if (e.target.classList[0] === "ubicacion") {
-        main.innerHTML = `<${subOpcion}-generico endPoint="location"></${subOpcion}-${opciones}>`;
+        main.innerHTML = `<${subOpcion}-generico endPoint="locations"></${subOpcion}-${opciones}>`;
         console.log(`<${subOpcion}-${opciones}></${subOpcion}-${opciones}>`);
       } else if (e.target.classList[0] === "tipo-persona") {
         main.innerHTML = `<${subOpcion}-generico endPoint="typePeople"></${subOpcion}-${opciones}>`;

@@ -14,7 +14,7 @@ export class AddActivo extends HTMLElement {
     this.guardar();
   }
   render() {
-    this.innerHTML = /* html */`
+    this.innerHTML = /* html */ `
     <link rel="stylesheet" href="App/webComponents/activos/activos.css">
     <section class="formulario">
     <form action="#" id="formulario">
@@ -105,8 +105,8 @@ export class AddActivo extends HTMLElement {
       </div>
       <div class="bolth-grid">
         <div class="inputs">
-          <label for="statuId">Estado:</label>
-          <select name="statuId" id="statuId" required>
+          <label for="locationId">Ubicación:</label>
+          <select name="locationId" id="locationId" required>
             <option value=""></option>
           </select>
         </div>
@@ -123,6 +123,8 @@ export class AddActivo extends HTMLElement {
     const tipoSelect = document.querySelector("#tipyAssetId");
     const proveedorSelect = document.querySelector("#supplierId");
     const estadoSelect = document.querySelector("#statuId");
+    const ubicacionSelect = document.querySelector("#locationId");
+    llenarSelect("locations", ubicacionSelect);
     llenarSelect("status", estadoSelect);
     llenarSelect("brands", marcaSelect);
     llenarSelect("tipyAssets", tipoSelect);
@@ -157,7 +159,7 @@ export class EditActivo extends HTMLElement {
   }
 
   render() {
-    this.innerHTML = `
+    this.innerHTML = /* html */ `
     <link rel="stylesheet" href="App/webComponents/activos/activos.css">
     <section class="formulario">
     <section class="header-estado">
@@ -263,6 +265,14 @@ export class EditActivo extends HTMLElement {
           </select>
         </div>
       </div>
+      <div class="bolth-grid">
+      <div class="inputs">
+        <label for="locationId">Ubicación:</label>
+        <select name="locationId" id="locationId" required>
+          <option value=""></option>
+        </select>
+      </div>
+    </div>
       <button type="submit" class="btn-registrarF">Registrar</button>
     </form>
   </section>
@@ -289,6 +299,7 @@ export class EditActivo extends HTMLElement {
         arrayIds.push(result[0].tipyAssetId);
         arrayIds.push(result[0].supplierId);
         arrayIds.push(result[0].statuId);
+        arrayIds.push(result[0].locationId);
         this.llenarCompos(arrayIds);
 
         // Agarrar los campos
@@ -316,7 +327,10 @@ export class EditActivo extends HTMLElement {
           const tipoSelect = document.querySelector("#tipyAssetId");
           const proveedorSelect = document.querySelector("#supplierId");
           const estadoSelect = document.querySelector("#statuId");
+          const ubicacionSelect = document.querySelector("#locationId");
+          // llenarSelect("locations", ubicacionSelect);
 
+          this.limpiarSelects(ubicacionSelect);
           this.limpiarSelects(marcaSelect);
           this.limpiarSelects(categoriaSelect);
           this.limpiarSelects(tipoSelect);
@@ -347,7 +361,8 @@ export class EditActivo extends HTMLElement {
     const tipoSelect = document.querySelector("#tipyAssetId");
     const proveedorSelect = document.querySelector("#supplierId");
     const estadoSelect = document.querySelector("#statuId");
-
+    const ubicacionSelect = document.querySelector("#locationId");
+    this.limpiarSelects(ubicacionSelect);
     this.limpiarSelects(marcaSelect);
     this.limpiarSelects(categoriaSelect);
     this.limpiarSelects(tipoSelect);
@@ -359,6 +374,7 @@ export class EditActivo extends HTMLElement {
     llenarSelect("tipyAssets", tipoSelect, ids[2]);
     llenarSelect("suppliers", proveedorSelect, ids[3]);
     llenarSelect("status", estadoSelect, ids[4]);
+    llenarSelect("locations", ubicacionSelect, ids[5]);
   }
 
   limpiarSelects(padre) {
@@ -398,20 +414,14 @@ export class DeleteActivo extends HTMLElement {
     <section class="main-content">
       <table border>
         <thead>
-          <tr>
-            <th></th>
-            <th>Id</th>
-            <th>Núm. serial</th>
-            <th>Estado</th>
-            <th>Núm. formulario</th>
-            <th>Cod. transacción</th>
-            <th>Valor $</th>
-            <th>Empresa responsable</th>
-            <th>Marca</th>
-            <th>Categoria</th>
-            <th>Tipo</th>
-            <th>Proveedor</th>
-          </tr>
+        <tr>
+          <th>Id</th>
+          <th>Núm. serial</th>
+          <th>Estado</th>
+          <th>Ubicación</th>
+          <th>Tipo</th>
+          <th></th>
+        </tr>
         </thead>
         <tbody id="tabla">
         </tbody>
@@ -438,28 +448,18 @@ export class DeleteActivo extends HTMLElement {
         console.log("here");
 
         const tabla = document.querySelector("#tabla");
-        const marca = await getOneData(result[0].brandId, "brands");
-        const categoria = await getOneData(
-          result[0].categoryAssetId,
-          "categoryAssets"
-        );
+
         const tipo = await getOneData(result[0].tipyAssetId, "tipyAssets");
-        const proveedor = await getOneData(result[0].supplierId, "suppliers");
         const estado = await getOneData(result[0].statuId, "status");
+        const ubicacion = await getOneData(result[0].locationId, "locations");
         console.log(estado.name);
         tabla.innerHTML = ` <tr>
-        <td><button class="eliminar-activo" id="${result[0].id}">Eliminar</button></td>
         <td>${result[0].id}</td>
         <td>${result[0].serialNumber}</td>
         <td class="estado-activo">${estado.name}</td>
-        <td>${result[0].formNumber}</td>
-        <td>${result[0].transactionCod}</td>
-        <td>${result[0].unitValue}</td>
-        <td>CampusLands</td>
-        <td>${marca.name}</td>
-        <td>${categoria.name}</td>
+        <td>${ubicacion.name}</td>
         <td>${tipo.name}</td>
-        <td>${proveedor.name}</td>
+        <td><button class="eliminar-activo" id="${result[0].id}">Eliminar</button></td>
       </tr>`;
 
         // Eliminar
@@ -493,6 +493,104 @@ export class DeleteActivo extends HTMLElement {
   }
 }
 
+export class SearchActivo extends HTMLElement {
+  constructor() {
+    super();
+    this.render();
+    this.buscar();
+  }
+
+  render() {
+    this.innerHTML = `
+    <link rel="stylesheet" href="App/webComponents/activos/activos.css">
+    <section class="formulario">
+    <section class="header-estado">
+      <form action="#" class="formulario-header">
+        <input
+          type="text"
+          name="name"
+          class="busqueda"
+          id="busqueda"
+          placeholder="Buscar por el id  o serial"
+          required
+        />
+        <button type="button" class="buscar-item">
+          <i class="bx bx-search"></i>Buscar
+        </button>
+      </form>
+    </section>
+    <div class="padreNotificacion">
+    </div>
+    <section class="main-content">
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Núm. serial</th>
+            <th>Estado</th>
+            <th>Tipo</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tabla">
+        </tbody>
+      </table>
+    </section>
+  </section>`;
+  }
+  async buscar() {
+    const btnBuscar = document.querySelector(".buscar-item");
+    btnBuscar.addEventListener("click", async (e) => {
+      const busqueda = document.querySelector("#busqueda").value;
+      const proveedores = await getData("assets");
+      let result = proveedores.filter(
+        (item) =>
+          item.serialNumber.startsWith(busqueda) || item.id.startsWith(busqueda)
+      );
+      var notificacion = document.querySelector(".padreNotificacion");
+      const p = document.createElement("P");
+
+      const tabla = document.querySelector("#tabla");
+      if (result.length === 1) {
+        console.log("here");
+
+        const tipo = await getOneData(result[0].tipyAssetId, "tipyAssets");
+        const estado = await getOneData(result[0].statuId, "status");
+        console.log(estado.name);
+        tabla.innerHTML = ` 
+        <tr>
+          <td>${result[0].id}</td>
+          <td>${result[0].serialNumber}</td>
+          <td class="estado-activo">${estado.name}</td>
+          <td>${tipo.name}</td>
+          <td><button class="ver-detalle" id="${result[0].id}">Ver detalle</button></td>
+        </tr>`;
+
+        // Eliminar
+        tabla.addEventListener("click", (e) => {
+          if (e.target.classList.contains("ver-detalle")) {
+            const idActivo = e.target.id;
+            console.log(idActivo + "funciona el click");
+          }
+        });
+      } else {
+        tabla.innerHTML = "";
+        p.classList.add("notificacionFail");
+        p.innerHTML = "Lo que buscas no existe";
+        notificacion.appendChild(p);
+        setTimeout(() => {
+          notificacion.removeChild(p);
+        }, 3000);
+      }
+    });
+  }
+
+  // buscar() {
+  //   const eliminaractivo ver-detalle";
+  // }
+}
+
 customElements.define("agregar-activos", AddActivo);
 customElements.define("editar-activos", EditActivo);
 customElements.define("eliminar-activos", DeleteActivo);
+customElements.define("buscar-activos", SearchActivo);
