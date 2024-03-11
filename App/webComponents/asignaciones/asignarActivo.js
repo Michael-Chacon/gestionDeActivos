@@ -57,6 +57,9 @@ export class MakeAsignacion extends HTMLElement {
             required
         ></textarea>
         </div>
+        <input type="text" name="date" class="fechaAs" hidden />
+        <input type="text" name="assignmentId" class="asignacionId" hidden />
+        <p class="showNotificacion"></p>
         <button type="submit" class="gurdar-asiganacion">Guardar</button>
     </form>
     </section>
@@ -82,8 +85,17 @@ export class MakeAsignacion extends HTMLElement {
     const datosAsigacionPersona = datosAsigacion.filter(
       (asignacion) => asignacion.responsibleId === this.idPersona
     );
-    console.log(datosAsigacion);
-    console.log(datosAsigacionPersona);
+
+    const asignacionId = document.querySelector(".asignacionId");
+    const fechaAsignacion = document.querySelector(".fechaAs");
+    asignacionId.value = datosAsigacionPersona[0].id;
+
+    var fechaActual = new Date();
+    var dia = fechaActual.getDate();
+    var mes = fechaActual.getMonth() + 1;
+    var año = fechaActual.getFullYear();
+    var fechaFormateada = dia + "/" + mes + "/" + año;
+    fechaAsignacion.value = fechaFormateada;
 
     nombre.textContent = datosPersona.name;
     email.textContent = datosPersona.email;
@@ -92,19 +104,41 @@ export class MakeAsignacion extends HTMLElement {
 
     idAsignacion.textContent = datosAsigacionPersona[0].id;
     fecha.textContent = datosAsigacionPersona[0].date;
+
     // obtener activos
     const selectorActivo = document.querySelector("#assetId");
     const activos = await getData("assets");
     const noAsignados = activos.filter((activo) => activo.statuId === "c7a6");
+
+    // llenar select
     noAsignados.forEach(async (activo) => {
       const tipoActivo = await getOneData(activo.tipyAssetId, "tipyAssets");
-      console.log(tipoActivo);
       const opcion = document.createElement("OPTION");
       opcion.value = activo.id;
       opcion.textContent = `${activo.id} - ${activo.serialNumber} - ${tipoActivo.name}`;
       selectorActivo.appendChild(opcion);
     });
-    console.log(noAsignados);
+    // obtener los datos de la asignación
+    const formulario = document.querySelector("#formulario");
+    formulario.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      let datosSinFormato = new FormData(formulario);
+      let formateado = Object.fromEntries(datosSinFormato);
+      // Guardar detalle de asignación
+      postData(formateado, "detailMovements");
+      let { assetId } = formateado;
+      // Actualizar el estado del activo
+      const obtenerActivo = await getOneData(assetId, "assets");
+      obtenerActivo.statuId = "8175";
+      updateData(obtenerActivo, "assets", assetId);
+      formulario.reset();
+      let showNotificacion = document.querySelector(".showNotificacion");
+      showNotificacion.innerHTML = "Asignación realizada con éxito";
+      setTimeout(() => {
+        showNotificacion.innerHTML = ""
+      }, 3500)
+    });
   }
 }
 

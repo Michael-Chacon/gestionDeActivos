@@ -72,3 +72,10 @@
     cursor: pointer;
     background-color: #7952b3c4;
 }
+
+.showNotificacion{
+    text-align: center;
+    font-size: 15px;
+    margin: 10px 0;
+    color: rgb(10 207 151);
+}
