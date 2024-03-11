@@ -177,9 +177,8 @@ export class EditActivo extends HTMLElement {
         </button>
       </form>
     </section>
-    <form action="#" id="formulario">
-      <div class="padreNotificacion">
-      </div>
+    <form action="#" id="formulario" class="inactive">
+      
       <input type="text" name="ide" id="ide" hidden>
       <div class="inputs">
         <label for="serialNumber" >Nro serial:<small> solo lectura</small> </label>
@@ -273,8 +272,10 @@ export class EditActivo extends HTMLElement {
         </select>
       </div>
     </div>
-      <button type="submit" class="btn-registrarF">Registrar</button>
+      <button type="submit" class="btn-registrarF">Actualizar</button>
     </form>
+    <div class="padreNotificacion">
+      </div>
   </section>
     `;
   }
@@ -301,6 +302,8 @@ export class EditActivo extends HTMLElement {
         arrayIds.push(result[0].statuId);
         arrayIds.push(result[0].locationId);
         this.llenarCompos(arrayIds);
+
+        formulario.style.display = 'block'
 
         // Agarrar los campos
         const serialNumber = document.querySelector("#serialNumber");
@@ -339,10 +342,12 @@ export class EditActivo extends HTMLElement {
           formulario.reset();
           p.classList.add("notificacionF");
           p.innerHTML = "Actualización exitosa";
+          
           notificacion.appendChild(p);
           setTimeout(() => {
             notificacion.removeChild(p);
           }, 3000);
+          formulario.style.display = 'none'
         });
       } else {
         p.classList.add("notificacionFail");
@@ -351,6 +356,7 @@ export class EditActivo extends HTMLElement {
         setTimeout(() => {
           notificacion.removeChild(p);
         }, 3000);
+        formulario.style.display = 'none'
       }
     });
   }

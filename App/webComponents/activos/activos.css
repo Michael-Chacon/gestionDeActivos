@@ -11,6 +11,14 @@
     width: 60%;
 }
 
+.active {
+    display: block;
+}
+
+.inactive {
+    display: none;
+}
+
 .bolth-grid{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
