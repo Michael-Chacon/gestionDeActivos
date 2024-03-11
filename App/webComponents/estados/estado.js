@@ -292,193 +292,100 @@ export class DeleteData extends HTMLElement {
   }
 }
 
-class TablaEstados extends HTMLElement {
+export class SearchData extends HTMLElement {
   constructor() {
     super();
+    this.endpoint = this.getAttribute("endPoint");
     this.render();
-    this.detectarClick();
-    this.datosFormulario();
-    this.actualizarEstado();
-    this.modal();
-    this.buscador();
+    this.mostrar();
+    this.buscar();
   }
-
   render() {
     this.innerHTML = `
-    <dialog >
-      <section class="form">
-        <form action="#" id="formulario">
-          <label for="tarea">Tarea</label>
-          <input
-            type="text"
-            name="name"
-            class="tarea"
-            id="name"
-          />
-          <div class="botones">
-            <span class="btn cancelar">Cancelar</span>
-            <input class="btn guardar" type="submit" value="Registrar tarea"></input>
-          </div>
-        </form>
-      </section>
-    </dialog>
-    <link rel="stylesheet" href="App/webComponents/estados/estado.css">
-    <section class="header-estado">
-    <div>
-    <button class="mostrar-modal"><i class="bx bx-plus"></i> Registrar estado</button>
-    </div>
-    <form action="#" class="formulario-header">
-    <input type="text" name="name" class="busqueda" placeholder="Buscar...">
-    </form>
-    <p>Status <i class='bx bx-pulse'></i></p>
+    <link rel="stylesheet" href="App/webComponents/estados/buscar.css">
+    <div class="container-busqueda">
+    <section class="header-busqueda">
+      <form action="#" class="formulario-header">
+        <input
+          type="text"
+          name="name"
+          class="busqueda"
+          placeholder="Buscar por el id  o nombre"
+          required
+        />
+        <button type="button" class="buscar-item">
+          <i class="bx bx-search"></i>Buscar
+        </button>
+      </form>
+    </section>
+  </div>
+  <section class="error"></section>
+  <section class="main-contenido">
   </section>
-    <section class="main-estado">
-      <div class="card-estado">
-        <p class="titulo-estado">En reparación y/oGarantia</p>
-        <p><small class="item-estado">Id: </small>dd02</p>
-        <div class="opciones-estado">
-          <button class="editar"><i class='bx bx-edit-alt'></i>Editar</button>
-          <button class="eliminar"><i class="bx bx-trash"></i>Eliminar</button>
-        </div>
-      </div>
-    </section>`;
+    `;
   }
 
-  buscador() {
-    const buscador = document.querySelector(".busqueda");
-    const datosDiv = this.querySelector(".main-estado");
-    buscador.addEventListener("input", async (e) => {
-      const estados = await getData("status");
-      datosDiv.innerHTML = "";
-      const busqueda = e.target.value.trim();
-      const result = estados.filter((estado) =>
-        estado.name.toLowerCase().startsWith(busqueda.toLowerCase())
-      );
-      if (result.length != 0) {
-        result.forEach((dato) => {
-          datosDiv.innerHTML += `
-        <div class="card-estado">
-        <p class="titulo-estado">${dato.name}</p>
-        <p><small class="item-estado">Id: </small>${dato.id}</p>
-        <div class="opciones-estado">
-          <button class="editar" id="${dato.id}"><i class='bx bx-edit-alt'></i>Editar</button>
-          <button class="eliminar" id="${dato.id}"><i class="bx bx-trash"></i>Eliminar</button>
-        </div>
-      </div>
-        `;
-        });
+  buscar() {
+    var formularioHeader = document.querySelector(".formulario-header");
+    const btnBuscar = document.querySelector(".buscar-item");
+    btnBuscar.addEventListener("click", async (e) => {
+      const textoABuscar = document.querySelector(".busqueda").value;
+      if (textoABuscar.trim() === "") {
+        alert("El input está vacío");
       } else {
-        datosDiv.innerHTML += `
-        <div class="card-estado">
-        <p class="titulo-estado">Estado no encontrado</p>
-      </div>
-        `;
+        e.preventDefault();
+        e.stopPropagation();
+        const estados = await getData(this.endpoint);
+        const busqueda = textoABuscar.trim();
+        let result = estados.filter(
+          (estado) =>
+            estado.name.toLowerCase().startsWith(busqueda.toLowerCase()) ||
+            estado.id.toLowerCase().startsWith(busqueda.toLowerCase())
+        );
+        const vacio = document.querySelector(".error");
+        const datosDiv = this.querySelector(".main-contenido");
+        if (result.length === 1) {
+          datosDiv.innerHTML = "";
+          datosDiv.innerHTML += `
+          <div class="card">
+            <p class="titulo-contenido">${result[0].name}</p>
+            <p><small class="item">Id: </small>${result[0].id}</p>
+          </div>
+          `;
+          vacio.innerHTML = "";
+        } else {
+          vacio.innerHTML = "No se encontraron resultados para su busqueda";
+          datosDiv.innerHTML = "";
+          this.mostrar();
+          setTimeout(() => {
+            vacio.innerHTML = "";
+          }, 4000);
+        }
+        formularioHeader.reset();
       }
     });
   }
 
-  // datosFormulario() {
-  //   const input = document.querySelector("#name");
-  //   const formulario = document.querySelector("#formulario");
-  //   const btnGuardar = document.querySelector(".guardar");
-  //   btnGuardar.addEventListener("click", async (e) => {
-  //     e.stopImmediatePropagation();
-  //     e.preventDefault();
-  //     if (btnGuardar.value === "Registrar tarea") {
-  //       guardarDatos(formulario, "status");
-  //       console.log("New");
-  //     } else if (btnGuardar.value === "Actualizar") {
-  //       const id = btnGuardar.id;
-  //       actualizarDatos(formulario, "status", id);
-  //       btnGuardar.value = "Registrar tarea";
-  //       console.log("Update");
-  //     }
-  //     const dialog = document.querySelector("dialog");
-  //     dialog.close();
-  //     input.value = "";
-  //     setTimeout(async () => {
-  //       await this.renderUpdatedData();
-  //     }, 100);
-  //   });
-  // }
-
-  async renderUpdatedData() {
-    const datosDiv = this.querySelector(".main-estado");
-    datosDiv.innerHTML = "";
-    const datos = await getData("status");
+  async mostrar() {
+    const datosDiv = this.querySelector(".main-contenido");
+    // datosDiv.innerHTML = "";
+    const datos = await getData(this.endpoint);
     if (datos.length != 0) {
       datos.forEach((dato) => {
         datosDiv.innerHTML += `
-      <div class="card-estado">
-      <p class="titulo-estado">${dato.name}</p>
-      <p><small class="item-estado">Id: </small>${dato.id}</p>
-      <div class="opciones-estado">
-        <button class="editar" id="${dato.id}"><i class='bx bx-edit-alt'></i>Editar</button>
-        <button class="eliminar" id="${dato.id}"><i class="bx bx-trash"></i>Eliminar</button>
+      <div class="card">
+        <p class="titulo-contenido">${dato.name}</p>
+        <p><small class="item">Id: </small>${dato.id}</p>
       </div>
-    </div>
       `;
       });
     } else {
       datosDiv.innerHTML += `
     <div class="card-estado">
-    <p class="titulo-estado">No hay estados registrados</p>
-  </div>
+      <p class="titulo-estado">No hay estados registrados</p>
+    </div>
     `;
     }
-  }
-
-  detectarClick() {
-    const areaPrincipal = document.querySelector(".main-estado");
-    areaPrincipal.addEventListener("click", (e) => {
-      if (e.target.classList.contains("eliminar")) {
-        const pregunta = confirm(
-          "¿Está seguro de que quiere borrar este estado?"
-        );
-        if (pregunta) {
-          const id = e.target.id;
-          deleteData(id, "status");
-          setTimeout(async () => {
-            await this.renderUpdatedData();
-          }, 100);
-        }
-      }
-    });
-  }
-
-  actualizarEstado() {
-    const areaPrincipal = document.querySelector(".main-estado");
-    areaPrincipal.addEventListener("click", async (e) => {
-      if (e.target.classList.contains("editar")) {
-        const id = e.target.id;
-        const estado = await getOneData(id, "status");
-        const dialog = document.querySelector("dialog");
-        const btnGuardar = document.querySelector(".guardar");
-        btnGuardar.value = "Actualizar";
-        btnGuardar.id = estado.id;
-        const input = document.querySelector("#name");
-        input.value = estado.name;
-        dialog.showModal();
-      }
-    });
-  }
-
-  connectedCallback() {
-    this.renderUpdatedData(); // Renderizar los datos al cargar el componente
-  }
-
-  modal() {
-    const dialog = document.querySelector("dialog");
-    const btnMostrarModal = document.querySelector(".mostrar-modal");
-    btnMostrarModal.addEventListener("click", () => {
-      dialog.showModal();
-    });
-    const btnCerrarModal = document.querySelector(".cancelar");
-    btnCerrarModal.addEventListener("click", () => {
-      const input = document.querySelector("#name");
-      input.value = "";
-      dialog.close();
-    });
   }
 }
 
@@ -486,3 +393,4 @@ class TablaEstados extends HTMLElement {
 customElements.define("agregar-generico", AddStatus);
 customElements.define("editar-generico", EditStatus);
 customElements.define("eliminar-generico", DeleteData);
+customElements.define("buscar-generico", SearchData);
