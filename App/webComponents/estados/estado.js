@@ -1,9 +1,10 @@
-import { getData } from "../../../Api/ApiActivos.js";
-import { deleteData } from "../../../Api/ApiActivos.js";
-import { getOneData } from "../../../Api/ApiActivos.js";
-import { updateData } from "../../../Api/ApiActivos.js";
+import {
+  getData,
+  deleteData,
+  getOneData,
+  updateData,
+} from "../../../Api/ApiActivos.js";
 import { guardarDatos } from "../../../js/app.js";
-import { actualizarDatos } from "../../../js/app.js";
 
 export class AddStatus extends HTMLElement {
   constructor() {

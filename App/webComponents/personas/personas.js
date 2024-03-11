@@ -1,8 +1,8 @@
-import { getData } from "../../../Api/ApiActivos.js";
-import { updateData } from "../../../Api/ApiActivos.js";
-import { deleteData } from "../../../Api/ApiActivos.js";
+import { getData, updateData, deleteData } from "../../../Api/ApiActivos.js";
 import { guardarDatos, llenarSelect } from "../../../js/app.js";
+
 export class AddProveedor extends HTMLElement {
+  
   constructor() {
     super();
     this.render();

@@ -1,9 +1,11 @@
-import { getData } from "../../../Api/ApiActivos.js";
-import { updateData } from "../../../Api/ApiActivos.js";
-import { getOneData } from "../../../Api/ApiActivos.js";
-import { deleteData } from "../../../Api/ApiActivos.js";
-import { llenarSelect } from "../../../js/app.js";
-import { guardarDatos } from "../../../js/app.js";
+import {
+  getData,
+  updateData,
+  getOneData,
+  deleteData,
+} from "../../../Api/ApiActivos.js";
+import { llenarSelect, guardarDatos } from "../../../js/app.js";
+
 export class AddActivo extends HTMLElement {
   constructor() {
     super();
