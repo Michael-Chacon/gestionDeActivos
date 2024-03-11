@@ -37,6 +37,7 @@ export class AddPeople extends HTMLElement {
             <option></option>
           </select>
         </div>
+        <input type="text" name="enabled" value="no" hidden>
         <button type="submit" class="btn-registrarF">Registrar</button>
         <div class="padreNotificacion">
         </div>
@@ -109,10 +110,14 @@ export class EditPeople extends HTMLElement {
             <input type="email" name="email" id="email" class="form-input" required/>
             </div>
             <div class="inputs">
-            <label for="tipoPersona">Tipo persona:</label>
-            <select name="typoPersonId" id="tipoPersona" class="form-input" required>
-            </select>
+              <label for="tipoPersona">Tipo persona:</label>
+              <select name="typoPersonId" id="tipoPersona" class="form-input" required>
+              </select>
             </div>
+            <div class="inputs">
+            <label for="enabled">Habilitada para asignaciones: <small> Solo lectura</small></label>
+            <input type="text" name="enabled" id="enabled" class="form-input" required readonly/>
+          </div>
             <button type="submit" class="btn-registrarF">Registrar</button>
             <div class="padreNotificacion">
             </div>
@@ -139,10 +144,12 @@ export class EditPeople extends HTMLElement {
       if (result.length === 1) {
         const name = document.querySelector("#name");
         const email = document.querySelector("#email");
+        const enabled = document.querySelector("#enabled");
 
         const id = document.querySelector("#id");
         name.value = result[0].name;
         email.value = result[0].email;
+        enabled.value = result[0].enabled;
         id.value = result[0].id;
         this.llenarCompo(result[0].typoPersonId);
         // Actulizar datos

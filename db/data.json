@@ -75,28 +75,18 @@
   ],
   "people": [
     {
-      "name": "Michael Chacón",
-      "email": "michael@gmail.com",
-      "typoPersonId": "2",
-      "id": "0001"
-    },
-    {
-      "name": "Briand Jhoan Porras",
-      "email": "briand@correo.com",
-      "typoPersonId": "2",
-      "id": "123"
-    },
-    {
       "id": "123",
       "name": "Briand Jhoan Porras",
       "email": "briand@correo.com",
-      "typoPersonId": "a2a2"
+      "typoPersonId": "a2a2",
+      "enabled": "no"
     },
     {
       "name": "Nathaly Porras.",
       "email": "nathaly@gmail.moc",
       "typoPersonId": "a2a2",
-      "id": "987"
+      "id": "987",
+      "enabled": "no"
     }
   ],
   "categoryAssets": [
@@ -176,5 +166,6 @@
       "name": "CampusLands",
       "id": "88d5"
     }
-  ]
+  ], 
+  "allocations":[]
 }
