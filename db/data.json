@@ -1,18 +1,60 @@
 {
   "assets": [
     {
-      "serialNumber": "0000",
-      "formNumber": "9999",
-      "transactionCod": "0001",
-      "unitValue": "666",
+      "id": "f76f",
+      "serialNumber": "001",
+      "formNumber": "100",
+      "transactionCod": "110",
+      "unitValue": "999.999",
       "companyId": "CampusLandas",
-      "brandId": "b5fc",
-      "categoryAssetId": "1",
-      "tipyAssetId": "400f",
-      "supplierId": "f5a7",
-      "statuId": "e3e6",
-      "id": "01", 
+      "brandId": "8171",
+      "categoryAssetId": "400f",
+      "tipyAssetId": "e23d",
+      "supplierId": "f382",
+      "statuId": "c7a6",
       "locationId": "01"
+    },
+    {
+      "id": "88f9",
+      "serialNumber": "002",
+      "formNumber": "200",
+      "transactionCod": "220",
+      "unitValue": "500.000",
+      "companyId": "CampusLandas",
+      "brandId": "eef8",
+      "categoryAssetId": "400f",
+      "tipyAssetId": "e23d",
+      "supplierId": "f5a7",
+      "statuId": "c7a6",
+      "locationId": "01"
+    },
+    {
+      "id": "098c",
+      "serialNumber": "003",
+      "formNumber": "300",
+      "transactionCod": "330",
+      "unitValue": "70.000",
+      "companyId": "CampusLandas",
+      "brandId": "0f10",
+      "categoryAssetId": "400f",
+      "tipyAssetId": "1c09",
+      "supplierId": "f382",
+      "statuId": "c7a6",
+      "locationId": "01"
+    },
+    {
+      "serialNumber": "12345678",
+      "formNumber": "87456321",
+      "transactionCod": "432187",
+      "unitValue": "1000000000",
+      "companyId": "CampusLandas",
+      "brandId": "a1c6",
+      "categoryAssetId": "400f",
+      "tipyAssetId": "11c0",
+      "supplierId": "8e96",
+      "statuId": "c7a6",
+      "locationId": "01",
+      "id": "eb4a"
     }
   ],
   "suppliers": [
@@ -44,42 +86,91 @@
   ],
   "brands": [
     {
-      "id": "b5fc",
-      "name": "Hp"
+      "id": "8171",
+      "name": "LG"
     },
     {
-      "id": "9dc0",
-      "name": "76"
+      "id": "e6d1",
+      "name": "COMPUMAX"
+    },
+    {
+      "id": "0f10",
+      "name": "LOGITECH"
+    },
+    {
+      "id": "4340",
+      "name": "BENQ"
+    },
+    {
+      "id": "eef8",
+      "name": "ASUS"
+    },
+    {
+      "id": "73ef",
+      "name": "LENOVO"
+    },
+    {
+      "id": "e935",
+      "name": "HP"
+    },
+    {
+      "id": "52a0",
+      "name": "asdfadf"
+    },
+    {
+      "name": "huawei",
+      "id": "a1c6"
     }
   ],
   "status": [
     {
-      "name": "Dado de baja por daño.",
-      "id": "3b31"
+      "id": "c7a6",
+      "name": "No asignado"
     },
     {
-      "id": "d807",
-      "name": "En reparación y/o garantía"
+      "id": "8175",
+      "name": "Asignado"
     },
     {
-      "name": "Michael Chacón dfad",
-      "id": "e3e6"
+      "id": "10e0",
+      "name": "Dado de baja por daño"
+    },
+    {
+      "name": "En reparación y/o garantía",
+      "id": "3660"
     }
   ],
   "assignments": [
     {
-      "id": "",
-      "date": "",
-      "responsibleId": ""
+      "id": "73eb",
+      "date": "11/3/2024",
+      "responsibleId": "222"
+    },
+    {
+      "id": "b7a5",
+      "date": "11/3/2024",
+      "responsibleId": "0001"
+    },
+    {
+      "id": "0594",
+      "date": "12/3/2024",
+      "responsibleId": "123456"
     }
   ],
   "people": [
     {
-      "id": "123",
+      "name": "Michael Chacón",
+      "email": "michael@gmail.com",
+      "typoPersonId": "1",
+      "enabled": "si",
+      "id": "0001"
+    },
+    {
       "name": "Briand Jhoan Porras",
       "email": "briand@correo.com",
-      "typoPersonId": "a2a2",
-      "enabled": "no"
+      "typoPersonId": "2",
+      "enabled": "no",
+      "id": "123"
     },
     {
       "name": "Nathaly Porras.",
@@ -87,12 +178,61 @@
       "typoPersonId": "a2a2",
       "id": "987",
       "enabled": "no"
+    },
+    {
+      "name": "Maritzaaaa",
+      "email": "maria@correo.com",
+      "typoPersonId": "1",
+      "enabled": "no",
+      "id": "adfa"
+    },
+    {
+      "id": "222",
+      "name": "Jhon Henry Niño Pico",
+      "email": "jhon@gmail.com",
+      "typoPersonId": "2",
+      "enabled": "si"
+    },
+    {
+      "name": "Juan Perez",
+      "email": "lukas@gmail.com",
+      "typoPersonId": "1",
+      "enabled": "si",
+      "id": "123456"
     }
   ],
-  "categoryAssets": [
+  "tipyAssets": [
     {
       "id": "1",
       "name": "juegos"
+    },
+    {
+      "id": "e23d",
+      "name": "Monitor"
+    },
+    {
+      "id": "2fba",
+      "name": " CPU"
+    },
+    {
+      "id": "cf6b",
+      "name": "Teclado"
+    },
+    {
+      "id": "1c09",
+      "name": "Mouse"
+    },
+    {
+      "id": "dd15",
+      "name": "Aire Acondicionado"
+    },
+    {
+      "name": "Portátil",
+      "id": "11c0"
+    },
+    {
+      "id": "4686",
+      "name": "Impresora"
     }
   ],
   "typePeople": [
@@ -103,10 +243,6 @@
     {
       "name": "Natural",
       "id": "2"
-    },
-    {
-      "id": "a2a2",
-      "name": "7dd"
     }
   ],
   "typeMovAssets": [
@@ -132,25 +268,21 @@
       "personId": ""
     }
   ],
-  "tipyAssets": [
+  "categoryAssets": [
     {
       "name": "Electrodomesticos",
       "id": "1"
     },
     {
-      "id": "400f",
-      "name": "Pc"
-    }
-  ],
-  "detailMovements": [
+      "name": "Equipo de computo",
+      "id": "400f"
+    },
     {
-      "id": "",
-      "date": "",
-      "assetId": "",
-      "comment": "",
-      "assignmentId": ""
+      "id": "00ae",
+      "name": "Juego"
     }
   ],
+  "detailMovements": [],
   "companies": [
     {
       "id": "1",
@@ -166,6 +298,5 @@
       "name": "CampusLands",
       "id": "88d5"
     }
-  ], 
-  "allocations":[]
+  ]
 }
