@@ -10,6 +10,7 @@ export class MakeAsignacion extends HTMLElement {
     super();
     this.idPersona = this.getAttribute("idPersona");
     this.render();
+    this.detalleMovimiento();
     this.asignar();
   }
 
@@ -62,6 +63,23 @@ export class MakeAsignacion extends HTMLElement {
         <p class="showNotificacion"></p>
         <button type="submit" class="gurdar-asiganacion">Guardar</button>
     </form>
+      </section>
+      <section class="card-tabla">
+      <h3>Detalle movimientos</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Fecha</th>
+            <th>Id activo</th>
+            <th>Comentario</th>
+            <th>Id asignacion</th>
+          </tr>
+        </thead>
+        <tbody id="tabla">
+          
+        </tbody>
+      </table>
     </section>
     `;
   }
@@ -132,12 +150,47 @@ export class MakeAsignacion extends HTMLElement {
       const obtenerActivo = await getOneData(assetId, "assets");
       obtenerActivo.statuId = "8175";
       updateData(obtenerActivo, "assets", assetId);
-      formulario.reset();
+      const comment = document.querySelector("#comment");
+      comment.value = "";
+      const selectAsset = document.querySelector("#assetId");
+      selectAsset.selectedIndex = -1;
+      setTimeout(async () => {
+        await this.detalleMovimiento();
+      }, 10);
+
+      // formulario.reset();
+
       let showNotificacion = document.querySelector(".showNotificacion");
       showNotificacion.innerHTML = "Asignación realizada con éxito";
       setTimeout(() => {
-        showNotificacion.innerHTML = ""
-      }, 3500)
+        showNotificacion.innerHTML = "";
+      }, 3500);
+    });
+  }
+
+  async detalleMovimiento() {
+    // this.asignar();
+    const asignaciones = await getData("assignments");
+    const filtrar = asignaciones.find(
+      (asignacion) => asignacion.responsibleId === this.idPersona
+    );
+    const detMovimiento = await getData("detailMovements");
+    const movimientos = detMovimiento.filter(
+      (movimiento) => movimiento.assignmentId === filtrar.id
+    );
+    console.log(movimientos);
+    const tabla = document.querySelector("#tabla");
+    tabla.innerHTML = "";
+    movimientos.forEach((detalle) => {
+      tabla.innerHTML += `
+      <tr>
+            <td>${detalle.id}</td>
+            <td>${detalle.date}</td>
+            <td>${detalle.assetId}</td>
+            <td>${detalle.comment}</td>
+            <td>${detalle.assignmentId}</td>
+          </tr>
+      `;
     });
   }
 }
