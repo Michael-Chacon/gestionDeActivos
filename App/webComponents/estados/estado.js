@@ -216,7 +216,7 @@ export class DeleteData extends HTMLElement {
           estado.name.toLowerCase().startsWith(busqueda.toLowerCase()) ||
           estado.id.toLowerCase().startsWith(busqueda.toLowerCase())
       );
-
+        
       console.log(result);
       const datosDiv = this.querySelector(".main-estado");
       datosDiv.innerHTML = "";
