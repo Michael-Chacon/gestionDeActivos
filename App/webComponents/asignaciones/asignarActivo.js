@@ -158,8 +158,6 @@ export class MakeAsignacion extends HTMLElement {
         await this.detalleMovimiento();
       }, 10);
 
-      // formulario.reset();
-
       let showNotificacion = document.querySelector(".showNotificacion");
       showNotificacion.innerHTML = "Asignación realizada con éxito";
       setTimeout(() => {
@@ -169,7 +167,6 @@ export class MakeAsignacion extends HTMLElement {
   }
 
   async detalleMovimiento() {
-    // this.asignar();
     const asignaciones = await getData("assignments");
     const filtrar = asignaciones.find(
       (asignacion) => asignacion.responsibleId === this.idPersona
@@ -195,4 +192,4 @@ export class MakeAsignacion extends HTMLElement {
   }
 }
 
-customElements.define("asigar-un-activo", MakeAsignacion);
+customElements.define("asignar-un-activo", MakeAsignacion);

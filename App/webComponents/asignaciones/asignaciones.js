@@ -3,6 +3,7 @@ import {
   getOneData,
   updateData,
   postData,
+  deleteData,
 } from "../../../Api/ApiActivos.js";
 
 export class CreateAsignacion extends HTMLElement {
@@ -189,14 +190,14 @@ export class AssignAsset extends HTMLElement {
           if (e.target.classList.contains("ver-detalle")) {
             const idPersona = e.target.id;
             const MAIN = document.querySelector(".main");
-            MAIN.innerHTML = `<asigar-un-activo idPersona='${idPersona}'></asigar-un-activo>`;
+            MAIN.innerHTML = `<asignar-un-activo idPersona='${idPersona}'></asignar-un-activo>`;
           }
         });
       } else {
         tabla.innerHTML = "";
         p.classList.add("notificacionFail");
         p.innerHTML =
-          "La persona a la que busca no existe o no está habilitada para recibir activos ";
+          "La persona a la que busca no existe o no está habilitada para recibir activos";
         notificacion.appendChild(p);
         tabla.innerHTML = "";
         setTimeout(() => {
@@ -211,9 +212,68 @@ export class ReturnActive extends HTMLElement {
   constructor() {
     super();
     this.render();
+    this.llenarDatalist();
+    this.cambiarEstado();
   }
   render() {
-    this.innerHTML = "Hola desde retornar asignacion";
+    this.innerHTML = `
+    <link rel="stylesheet" href="App/webComponents/asignaciones/asignaciones.css">
+    <section class="card-retorno">
+      <h3>Retornar activo</h3>
+      <p class="alertaA">Activos que están asignados y pueden ser retornados</p>
+      <form action="#" id="formulario">
+        <div class="group-form">
+          <input
+            type="list"
+            list="activos"
+            id="listaActivos"
+            placeholder="Buscar por serial o id"
+          />
+          <datalist id="activos">
+          </datalist>
+          <button class="btnRetornar">Retornar activo</button>
+          <p class="showNotificacion"></p>
+        </div>
+      </form>
+    </section>    
+    `;
+  }
+
+  cambiarEstado() {
+    const listActivos = document.querySelector("#listaActivos");
+    const btnRetornar = document.querySelector(".btnRetornar");
+    btnRetornar.addEventListener("click", async (e) => {
+      e.preventDefault();
+      let idActivo = listActivos.value;
+      const activo = await getOneData(idActivo, "assets");
+      activo.statuId = "c7a6";
+
+      let detalleMovimiento = await getData("detailMovements");
+      let detalle = detalleMovimiento.filter(
+        (item) => item.assetId == idActivo
+      );
+      // console.log(detalle[0].id);
+      updateData(activo, "assets", idActivo);
+      deleteData(detalle[0].id, "detailMovements");
+      let showNotificacion = document.querySelector(".showNotificacion");
+      showNotificacion.innerHTML = "Activo retornado con éxito";
+      setTimeout(() => {
+        showNotificacion.innerHTML = "";
+      }, 3500);
+    });
+  }
+
+  async llenarDatalist() {
+    const activos = await getData("assets");
+    const asignados = activos.filter((activo) => activo.statuId === "8175");
+    const listActivos = document.querySelector("#activos");
+    asignados.forEach(async (activo) => {
+      const tipo = await getOneData(activo.tipyAssetId, "tipyAssets");
+      const opcion = document.createElement("OPTION");
+      opcion.value = activo.id;
+      opcion.innerHTML = `Serial: ${activo.serialNumber} - ${tipo.name}`;
+      listActivos.appendChild(opcion);
+    });
   }
 }
 
