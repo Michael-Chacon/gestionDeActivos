@@ -7,6 +7,10 @@
 
 El presente proyecto consiste en una página web para asignar Activos en el departamento de inventarios de Campuslands. Se puede agregar, editar, eliminar y buscar Activos; Personas; Proveedores; Estados; Marcas; Ubicación; Categoría de activos; Tipo persona; Tipo movimiento del activo; y Tipo de Activo; Así mismo, en el módulo de asignación se puede crear, asignar y retornarlos.
 
+**NOTA:** El diccionario JSON debe ubicarse fuera del archivo del programa, esto con el fin de evitar que la página se recargue y así simular un entorno más real al trabajar con APIs.
+
+
+
 #### Servicios Api creados:
 
 - getData(endpoint, embed = ""):
