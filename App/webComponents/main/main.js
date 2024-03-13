@@ -11,7 +11,7 @@ export class MainComponent extends HTMLElement {
     </style>
     <script src="menu.js" type="module" defer></script>
     <section id="sidebar">
-    <a href="#" class="brand"><i class="bx bxs-smile icon"></i>Campus</a>
+    <a href="#" class="brand"><i class='bx bxs-dashboard icon'></i>Campus</a>
     <ul class="side-menu">
       <!-- <li>
         <a href="#" class="active"
@@ -31,7 +31,7 @@ export class MainComponent extends HTMLElement {
       </li>
       <li>
       <a href="#"
-        ><i class='bx bx-list-ul icon'></i> Asignación
+        ><i class='bx bxs-user-check icon'></i> Asignación
         <i class="bx bx-chevron-right icon-right"></i
       ></a>
       <ul class="side-dropdown">
@@ -50,18 +50,6 @@ export class MainComponent extends HTMLElement {
         <li><a href="#" class="persona editar">Editar</a></li>
         <li><a href="#" class="persona eliminar">Eliminar</a></li>
         <li><a href="#" class="persona buscar">Buscar</a></li>
-      </ul>
-    </li>
-      <li>
-      <a href="#"
-        ><i class='bx bxs-cart icon'></i> Proveedor
-        <i class="bx bx-chevron-right icon-right"></i
-      ></a>
-      <ul class="side-dropdown">
-      <li><a href="#" class="proveedor agregar">Agregar</a></li>
-      <li><a href="#" class="proveedor editar">Editar</a></li>
-      <li><a href="#" class="proveedor eliminar">Eliminar</a></li>
-      <li><a href="#" class="proveedor buscar">Buscar</a></li>
       </ul>
     </li>
       <li>
@@ -136,6 +124,18 @@ export class MainComponent extends HTMLElement {
       <li><a href="#" class="tipo-movimiento-activo buscar">Buscar</a></li>
       </ul>
     </li>
+    <li>
+    <a href="#"
+      ><i class='bx bxs-cart icon'></i> Proveedor
+      <i class="bx bx-chevron-right icon-right"></i
+    ></a>
+    <ul class="side-dropdown">
+    <li><a href="#" class="proveedor agregar">Agregar</a></li>
+    <li><a href="#" class="proveedor editar">Editar</a></li>
+    <li><a href="#" class="proveedor eliminar">Eliminar</a></li>
+    <li><a href="#" class="proveedor buscar">Buscar</a></li>
+    </ul>
+  </li>
     <li>
         <a href="#"
           ><i class='bx bx-devices icon' ></i> Tipo activo
